@@ -1,0 +1,199 @@
+states:
+  fullok:
+    symbol: '<svg height="11.92" overflow="visible" version="1.1" width="11.92"><g transform="translate(0,11.92) matrix(1 0 0 -1 0 0) translate(5.96,0) translate(0,5.96)" fill="#B9D25F" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 0 M 5.96 0 C 5.96 3.29 3.29 5.96 0 5.96 C -3.29 5.96 -5.96 3.29 -5.96 0 C -5.96 -3.29 -3.29 -5.96 0 -5.96 C 3.29 -5.96 5.96 -3.29 5.96 0 Z M 0 0" style="stroke:none"></path></g></svg>'
+    description: Full vendor support
+  prettyok:
+    symbol: '<svg height="12.64" overflow="visible" version="1.1" width="12.64"><g transform="translate(0,12.64) matrix(1 0 0 -1 0 0) translate(6.32,0) translate(0,6.32)" fill="#D3C65D" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 6.32 6.32 L -6.32 6.32 L -6.32 -6.32 L 6.32 -6.32 Z" style="stroke:none"></path></g></svg>'
+    description: Vendor support, but not (yet) entirely comprehensive
+  indirectok:
+    symbol: '<svg height="7.92" overflow="visible" version="1.1" width="15.85"><g transform="translate(0,7.92) matrix(1 0 0 -1 0 0) translate(7.92,0) translate(0,4.75)" fill="#FBBC6A" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M -7.92 3.17 C -7.92 -1.21 -4.38 -4.75 0 -4.75 C 4.38 -4.75 7.92 -1.21 7.92 3.17 Z" style="stroke:none"></path></g></svg>'
+    description: Indirect, but comprehensive support, by vendor
+  nonvendorok:
+    symbol: '<svg height="13.4" overflow="visible" version="1.1" width="15.48"><g transform="translate(0,13.4) matrix(1 0 0 -1 0 0) translate(7.74,0) translate(0,4.47)" fill="#E1A251" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 8.94 L -7.74 -4.47 L 7.74 -4.47 Z" style="stroke:none"></path></g></svg>'
+    description: Comprehensive support, but not by vendor
+  somesupport:
+    symbol: '<svg height="16.17" overflow="visible" version="1.1" width="17"><g transform="translate(0,16.17) matrix(1 0 0 -1 0 0) translate(8.5,0) translate(0,7.23)" fill="#F38966" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 8.94 L -2.45 3.37 L -8.5 2.76 L -3.97 -1.29 L -5.25 -7.23 L 0 -4.17 L 5.25 -7.23 L 3.97 -1.29 L 8.5 2.76 L 2.45 3.37 Z" style="stroke:none"></path></g></svg>'
+    description: Limited, probably indirect support -- but at least some
+  nope:
+    symbol: '<svg height="9.45" overflow="visible" version="1.1" width="9.45"><g transform="translate(0,9.45) matrix(1 0 0 -1 0 0) translate(0.55,0) translate(0,0.55)" fill="#000000" stroke="#EB5F73" stroke-width="0.8pt" color="#000000"><path d="M 0 0 L 8.34 8.34" style="fill:none"></path></g></svg>'
+    description: No direct support available, but of course one could ISO-C-bind your way through it or directly link the libraries
+vendors:
+  NVIDIA:
+    CUDA:
+      C:
+        cudac: fullok
+      F:
+        cudafortran: fullok
+    HIP:
+      C:
+        nvidiahip: indirectok
+      F:
+        hipfortran: nonvendorok
+    SYCL:
+      C:
+        nvidiasycl: nonvendorok
+      F: 
+        syclfortran: nope
+    OpenACC:
+      C:
+        openaccc: fullok
+      F:
+        openaccfortran: fullok
+    OpenMP:
+      C:
+        nvidiaopenmpc: prettyok
+      F:
+        nvidiaopenmpfortran: prettyok
+    Standard:
+      C:
+        nvidiastandardc: fullok
+      F:
+        nvidiastandardfortran: fullok
+    Kokkos:
+      C:
+        nvidiakokkosc: nonvendorok
+      F:
+        nvidiakokkosfortran: somesupport
+    ALPAKA:
+      C:
+        nvidiaalpakac: nonvendorok
+      F:
+        nvidiaalpakafortran: nope
+    etc:
+      Python:
+        nvidiapython: 
+          - prettyok
+          - nonvendorok
+  AMD:
+    CUDA:
+      C:
+        amdcudac: indirectok        
+      F:
+        amdcudafortran: somesupport
+    HIP:
+      C:
+        amdhipc: fullok 
+      F:
+        hipfortran: nope 
+    SYCL:
+      C:
+        amdsyclc: indirectok
+      F:
+        syclfortran: nope
+    OpenACC:
+      C:
+        amdopenaccc: nonvendorok
+      F:
+        amdopenaccfortran:
+          - nonvendorok
+          - somesupport
+    OpenMP:
+      C:
+        amdopenmp: fullok
+      F:
+        amdopenmp: fullok
+    Standard:
+      C:
+        amdstandard: nope
+      F:
+        amdstandard: nope
+    Kokkos:
+      C:
+        amdkokkosc: nonvendorok
+      F:
+        nvidiakokkosfortran: somesupport
+    ALPAKA:
+      C:
+        amdalpakac: nonvendorok
+      F:
+        nvidiaalpakafortran: nope
+    etc:
+      Python:
+        amdpython: somesupport
+  Intel:
+    CUDA:
+      C:
+        intelcudac: indirectok
+      F:
+        intelcudafortran: nope
+    HIP:
+      C:
+        intelhipc: somesupport
+      F:
+        hipfortran: nope
+    SYCL:
+      C:
+        intelsyclc: fullok
+      F:
+        syclfortran: nope
+    OpenACC:
+      C:
+        intelopenacc: somesupport
+      F:
+        intelopenacc: somesupport
+    OpenMP:
+      C:
+        intelopenmp: fullok
+      F:
+        intelopenmp: fullok
+    Standard:
+      C:
+        intelstandardc: nope
+      F:
+        intelstandardfortran: prettyok
+    Kokkos:
+      C:
+        intelkokkosc: nonvendorok
+      F:
+        nvidiakokkosfortran: somesupport
+    ALPAKA:
+      C:
+        intelalpakac: somesupport
+      F:
+        nvidiaalpakafortran: nope
+    etc:
+      Python:
+        intelpython: somesupport
+descriptions:
+  cudac: "CUDA C/C++, supported through CUDA Toolkit"
+  cudafortran: "CUDA Fortran, proprietary Fortran extension supported by NVIDIA HPC SDK"
+  nvidiahip: "HIP programs can directly use NVIDIA GPUs via a CUDA backend; HIP is maintained by AMD"
+  hipfortran: "No such thing like HIP for Fortran"
+  nvidiasycl: 'SYCL can be used on NVIDIA GPUs with <em>experimental</em> support either in 
+              <a href="https://github.com/codeplaysoftware/sycl-for-cuda/blob/cuda/sycl/doc/GetStartedWithSYCLCompiler.md#build-sycl-toolchain-with-support-for-nvidia-cuda">SYCL</a> directly or in <a href="https://github.com/intel/llvm/blob/sycl/sycl/doc/GetStartedGuide.md#build-dpc-toolchain-with-support-for-nvidia-cuda">DPC++</a>, 
+              or via <a href="https://github.com/illuhad/hipSYCL">hipSYCL</a>'
+  syclfortran: 'No such thing like SYCL for Fortran'
+  openaccc: 'OpenACC C/C++ supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by GCC C compiler and Clacc'
+  openaccfortran: 'OpenACC Fortran supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by GCC Fortran compiler and <a href="https://ieeexplore.ieee.org/document/9651310">Flacc</a>'
+  nvidiaopenmpc: 'OpenMP in C supported on NVIDIA GPUs through NVIDIA HPC SDK (but not full OpenMP feature set available), by GCC, and Clang'
+  nvidiaopenmpfortran: 'OpenMP in Fortran supported on NVIDIA GPUs through NVIDIA HPC SDK (but not full OpenMP feature set available), by GCC, and Flang'
+  nvidiastandardc: 'pSTL features supported on NVIDIA GPUs through NVIDIA HPC SDK'
+  nvidiastandardfortran: 'Standard Language parallel features supported on NVIDIA GPUs through NVIDIA HPC SDK'
+  nvidiakokkosc: 'Kokkos supports NVIDIA GPUs by calling CUDA as part of the compilation process'
+  nvidiakokkosfortran: 'Kokkos is a C++ model, but at least the authors provided an ISO C Binding example for Fortran'
+  nvidiaalpakac: 'Alpaka supports NVIDIA GPUs by calling CUDA as part of the compilation process'
+  nvidiaalpakafortran: 'Alpaka is a C++ model'
+  nvidiapython: 'There is a vast community of offloading Python code to NVIDIA GPUs, like CuPy, Numba, cuNumeric, and many others; NVIDIA actively supports a lot of them, but has no direct product like <it>CUDA for Python</it>; so, the status is somewhere in between'
+  amdcudac: '<a href="https://github.com/ROCm-Developer-Tools/HIPIFY">hipify</a> by AMD can translate CUDA calls to HIP calls which runs natively on AMD GPUs'
+  amdcudafortran: 'AMD offers a Source-to-Source translator to convert some CUDA Fortran functionality to OpenMP for AMD GPUs (<a href="https://github.com/ROCmSoftwarePlatform/gpufort">gpufort</a>); in addition, there are ROCm library bindings for Fortran in <a href="https://github.com/ROCmSoftwarePlatform/hipfort">hipfort</a>
+    OpenACC/CUDA Fortran Source-to-Source translator <a href="https://github.com/ROCmSoftwarePlatform/gpufort">gpufort</a>.'
+  amdhipc: 'HIP is the preferred native programming model for AMD GPUs'
+  amdsyclc: 'SYCL can use AMD GPUs, for example with <a href="https://github.com/illuhad/hipSYCL">hipSYCL</a> or <a href="https://github.com/intel/llvm/blob/sycl/sycl/doc/GetStartedGuide.md#build-dpc-toolchain-with-support-for-hip-amd">DPC++ for HIP AMD</a>'
+  amdopenaccc: "OpenACC C/C++ can be used on AMD GPUs via GCC or Clacc; also, <a href=\"https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp\">Intel's OpenACC to OpenMP Source-to-Source translator</a> can be used to generate OpenMP directives from OpenACC directives"
+  amdopenaccfortran: "OpenACC Fortran can be used on AMD GPUs via GCC; also, AMD's <a href=\"https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp\">gpufort</a> Source-to-Source translator can move OpenACC Fortran code to OpenMP Fortran code, and also Intel's translator can work"
+  amdopenmp: 'AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: AOMP; it supports both C/C++ (Clang) and Fortran (Flang, <a href="https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload">example</a>)'
+  amdstandard: 'Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs'
+  amdkokkosc: 'Kokkos supports AMD GPUs through HIP'
+  amdalpakac: 'Alpaka supports AMD GPUs through HIP'
+  amdpython: 'AMD does not officially support GPU programming with Python (also not semi-officially like NVIDIA), but third-party support is available, for example through <a href="https://numba.pydata.org/numba-doc/latest/roc/index.html">Numba</a> or a <a href="https://docs.cupy.dev/en/latest/install.html?highlight=rocm#building-cupy-for-rocm-from-source">HIP version of CuPy</a>'
+  intelcudac: "<a href='https://github.com/oneapi-src/SYCLomatic'>SYCLomatic</a> translates CUDA code to SYCL code, allowing it to run on Intel GPUs; also, Intel's <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html'>DPC++ Compatability Tool</a> can transform CUDA to SYCL"
+  intelcudafortran: "No direct support, only via ISO C bindings, but at least an example can be <a href='https://github.com/codeplaysoftware/SYCL-For-CUDA-Examples/tree/master/examples/fortran_interface'>found on GitHub</a>; it's pretty scarce and not by Intel itself, though"
+  intelhipc: "<a href='https://github.com/CHIP-SPV/chip-spv'>CHIP-SPV</a> supports mapping CUDA and HIP to OpenCL and Intel's Level Zero, making it run on Intel GPUs"
+  intelsyclc: "SYCL is the prime programming model for Intel GPUs; actually, SYCL is only a standard, while Intel's implementation of it is called DPC++ (<em>Data Parallel C++</em>), which extends the SYCL standard in places"
+  intelopenacc: "OpenACC can be used on Intel GPUs by translating the code to OpenMP with <a href='https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp'>Intel's Source-to-Source translator</a>"
+  intelopenmp: "Intel has <a href='https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp/top.html'>extensive support for OpenMP</a> through their latest compilers"
+  intelstandardc: "Currently, no (known) way to launch Standard-based parallel algorithms on Intel GPUs"
+  intelstandardfortran: "With <a href='https://www.intel.com/content/www/us/en/developer/articles/release-notes/fortran-compiler-release-notes.html'>Intel oneAPI 2022.3</a>, Intel supports DO CONCURRENT with GPU offloading"
+  intelkokkosc: "Kokkos supports Intel GPUs through SYCL"
+  intelalpakac: "<a href='https://github.com/alpaka-group/alpaka/releases/tag/0.9.0'>Alpaka v0.9.0</a> introduces experimental SYCL support"
+  intelpython: "Not a lot of support available at the moment, but notably <a href='https://intelpython.github.io/dpnp/'>DPNP</a>, a SYCL-based drop-in replacement for Numpy"

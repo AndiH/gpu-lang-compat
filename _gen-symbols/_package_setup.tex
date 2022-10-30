@@ -1,0 +1,27 @@
+
+%% hyperref setup
+\hypersetup{%
+ pdfusetitle,
+ % pdftex,                   % use pdftex backend
+ bookmarksnumbered=true,   % put section numbers in bookmarks
+ bookmarksdepth=5,
+ pdfstartview={FitH},       % starts presentation in fit
+ % linktocpage=true,         % make page number (not text) be link on TOC
+ % pdfpagelabels=true,       % set PDF page labels
+ colorlinks=true,          % false: boxed links; true: colored links
+ linkcolor=linkblue,       % color of internal links
+ citecolor=linkblue,       % color of links to bibliography
+ filecolor=linkblue,       % color of file links
+ urlcolor=linkblue         % color of external links
+}
+
+%% SIUNITX setup
+\sisetup{
+  per-mode = symbol,       % creates a backslash for division as default, can be overridden individually
+  separate-uncertainty = true,  % dont use "10.0(1)" notation for uncertainties, but do use "10.0 \pm 0.1"
+  %math-micro=\muup,text-micro=\ensuremath{\muup},  % Use upright mu for units
+  list-final-separator = {, and~}  % add Oxford comma for lists
+  % group-separator = {,}
+}
+
+% \input{_header}

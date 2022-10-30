@@ -1,0 +1,62 @@
+%!TEX root = gpu-vendor-model-matrix.tex
+\begin{frame}
+\relsize{-2}\vspace*{-1\baselineskip}
+\begin{multicols}{3}
+    \begin{description}[\nonvendorok]
+    \ifdefined\tightlist\tightlist\fi%
+    ((* for state_name, state_description in data.get('states').items() *))
+    \item[\((( state_name )))] ((( state_description.get('description') )))
+    ((* endfor *))
+    \end{description}
+\end{multicols}
+
+((* set first_vendor = data.get('vendors').keys() | list | first *))
+\begin{tabular}{c|cc|cc|cc|cc|cc|cc|cc|cc|c}
+  &
+    ((* for key, value in data.get('vendors').get(first_vendor).items() *))
+    ((* if not key == 'etc' -*))
+    \multicolumn{2}{c}{((( key )))} &
+    ((* endif -*))
+    ((* endfor -*))
+    \\
+  &
+    ((* for key, value in data.get('vendors').get(first_vendor).items() *))
+    ((* for kkey, vvalue in value.items() -*))
+    \((( kkey ))) ((* if not key =='etc' *))&((* endif *))
+    ((*- endfor +*))
+    ((* endfor *))
+    \\
+  ((* for vendor, models in data.get('vendors').items() *))
+  ((*- set loop_vendors = loop -*))
+  ((( vendor ))) &
+  ((* for model_name, languages in models.items() *))
+  ((*- set loop_models = loop -*))
+  ((* for language, description in languages.items() *))
+  ((*- set loop_languages = loop -*))
+  ((* for desc_values in description.values() -*))
+  ((*- set loop_descriptions = loop -*))
+  ((*- if desc_values is string -*))
+    \((( desc_values -)))
+  ((*- else -*))
+  ((*- for desc_value in desc_values -*))
+   \((( desc_value )))
+  ((*- endfor -*))
+  ((*- endif -*))
+  \refwithstate{((( description.keys() | first )))}
+  (((- ' & ' if not loop_models.last )))
+  ((*- endfor -*))
+  ((*- endfor -*))
+  ((*- endfor +*)) \\
+  ((* endfor *))
+\end{tabular}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+\begin{itemize}
+    \relsize{-2}%
+    \ifdefined\tightlist\tightlist\fi%
+    ((* for shortname, description in data.get('descriptions').items() *))
+    \item \ref{((( shortname )))}: ((( description )))
+    ((* endfor *))
+\end{itemize}
+\end{frame}

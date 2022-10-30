@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[a4paper, margin=5mm, paperheight=20cm]{geometry}
+\usepackage{beamerarticle}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{booktabs}
+\usepackage{relsize}
+\usepackage{multicol}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\setsansfont{SourceSansPro}[
+        UprightFont = *-Regular, 
+        BoldFont={*-Semibold}, 
+        ItalicFont={*-It}, 
+        BoldItalicFont={*-SemiboldIt}
+    ]
+\newfontfamily{\lightfont}{SourceSansPro}[
+    Scale=MatchUppercase, 
+    UprightFont = *-Light, 
+    ItalicFont={*-LightIt}, 
+    BoldFont={*-Regular}
+]
+\newcommand\textlight[1]{{\lightfont #1}}
+\newfontfamily{\boldfont}{SourceSansPro-Bold}[
+    BoldFont={SourceSansPro-Black}
+]
+\newcommand\textbold[1]{{\boldfont #1}}
+\newfontfamily{\boldboldfont}{SourceSansPro-Black.otf}
+\newcommand\textboldbold[1]{{\boldboldfont #1}}
+\setmonofont{FiraMono}[
+    Scale=MatchLowercase, 
+    UprightFont = *-Regular, 
+    %ItalicFont = *-RegIt, 
+    BoldFont={*-Medium}, 
+    %BoldItalicFont={FiraMono-medit.otf}%
+]%
+\renewcommand{\familydefault}{\sfdefault}
+%% hyperref setup
+\hypersetup{%
+ pdfusetitle,
+ % pdftex,                   % use pdftex backend
+ bookmarksnumbered=true,   % put section numbers in bookmarks
+ bookmarksdepth=5,
+ pdfstartview={FitH},       % starts presentation in fit
+ % linktocpage=true,         % make page number (not text) be link on TOC
+ % pdfpagelabels=true,       % set PDF page labels
+ colorlinks=true,          % false: boxed links; true: colored links
+ linkcolor=linkblue,       % color of internal links
+ citecolor=linkblue,       % color of links to bibliography
+ filecolor=linkblue,       % color of file links
+ urlcolor=linkblue         % color of external links
+}
+
+\definecolor{fzjblue}{RGB}{2,61,107}
+\definecolor{fzjlightblue}{RGB}{173,189,227}
+\definecolor{fzjgray}{RGB}{235,235,235}
+\colorlet{fzjgrey}{fzjgray}
+\definecolor{fzjred}{RGB}{235, 95, 115}
+\definecolor{fzjgreen}{RGB}{185, 210, 95}
+\definecolor{fzjyellow}{RGB}{250, 235, 90}
+\definecolor{fzjviolet}{RGB}{175, 130, 185}
+\definecolor{fzjorange}{RGB}{250, 180, 90}
+\definecolor{fzjwhite}{RGB}{255,255,255}
+\definecolor{linkblue}{RGB}{22,79,134}
+\definecolor{fzjblue50}{cmyk}{1,0.2,0.05,0.50}
+\definecolor{myblue}{RGB}{184,211,254}
+
+\author{Andreas Herten, Kaveh Haghighi-Mood}
+\institute{Forschungszentrum J\"ulich}
+\title{Many Ways to GPUs}
+\subtitle{GPU Introduction}
+\date{13 October 2022}
+
+\renewcommand{\emph}[1]{{\itshape #1}}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\colorlet{ok}{fzjgreen}
+\colorlet{prime}{fzjgreen!70!black}
+\colorlet{prettyok}{fzjgreen!60!fzjorange}
+\colorlet{nonvendorok}{fzjorange!90!black}
+\colorlet{indirectok}{fzjorange!90!white}
+\colorlet{somesupport}{fzjorange!50!fzjred}
+\colorlet{nope}{fzjred}
+\newcommand{\C}{C++}
+\newcommand{\F}{Fortran}
+\newcommand{\Python}{Python}
+\newcommand{\mycirc}[1]{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) {} [fill=#1, prime] (0, 0) circle [radius=1ex];}}
+\newcommand{\myno}[1]{\tikz[inner sep=0pt, outer sep=0pt]{\draw [draw=#1, very thick] (0, 0) -- ++(0.8ex, 0.8ex);}}
+\newcommand{\fullok}{\mycirc{ok}}
+\newcommand{\prettyok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [regular polygon, regular polygon sides=4, fill=prettyok, minimum size=3ex] at (0,0) {};}}
+\newcommand{\nonvendorok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [regular polygon, regular polygon sides=3, fill=nonvendorok, minimum size=3ex] at (0,0) {};}}
+\newcommand{\indirectok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [shape= semicircle, fill=indirectok, minimum size=1.33ex, rotate=180] at (0,0) {};}}
+\newcommand{\somesupport}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [star, star point height=0.8ex, fill=somesupport, minimum size=3ex] at (0,0) {};}}
+\newcommand{\nope}{\tikz[inner sep=0pt, outer sep=0pt]{\path (X) [draw=nope, thick] (0,0) -- ++(1.4ex,1.4ex);}}
+
+\newcounter{pmdesc}
+\makeatletter
+\newcommand{\iflabelexists}[3]{\@ifundefined{myr@#1}{#3}{#2}}
+\NewDocumentCommand{\refwithstate}{ m }{%
+    % Will create a label if it does not exist; will always print a ^N reference
+    % Adapted from https://tex.stackexchange.com/a/372295/56326
+    \iflabelexists{#1}{}{%
+        \global\expandafter\let\csname myr@#1\endcsname\@empty
+        \refstepcounter{pmdesc}\label{#1}%
+    }%
+    \textsuperscript{\ref{#1}}%
+}
+\makeatother
+
+\begin{document}
+
+\input{gpu-vendor-model-matrix.table}
+
+\end{document}
+

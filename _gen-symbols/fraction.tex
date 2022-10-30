@@ -1,0 +1,113 @@
+\begin{multicols}{2}
+    \begin{description}
+      \item[\C] C/C++
+      \item[\fullok] Full vendor support
+      \item[\prettyok] Vendor support, but not (yet) entirely comprehensive
+      \item[\indirectok] Indirect, but comprehensive support, by vendor
+      \item[\nonvendorok] Comprehensive support, but not by vendor
+      \item[\somesupport] Limited, probably indirect support -- but at least some
+      \item[\nope] No direct support available, but of course one could ISO-C-bind your way through it or directly link the libraries
+    \end{description}
+\end{multicols}
+
+\begin{tabular}{c|cc|cc|cc|cc|cc|cc|cc|cc|c}
+    &
+        \multicolumn{2}{c}{CUDA} & 
+        \multicolumn{2}{c}{HIP} &
+        \multicolumn{2}{c}{SYCL} &
+        \multicolumn{2}{c}{OpenACC} &
+        \multicolumn{2}{c}{OpenMP} &
+        \multicolumn{2}{c}{Standard} &
+        \multicolumn{2}{c}{Kokkos} &
+        \multicolumn{2}{c}{ALPAKA} & 
+        \\
+    & 
+        \C & \Fortran &
+        \C & \Fortran &
+        \C & \Fortran &
+        \C & \Fortran &
+        \C & \Fortran &
+        \C & \Fortran &
+        \C & \Fortran &
+        \C & \Fortran &
+        Python \\
+    NVIDIA &
+        \fullok\pmd{cudac} & \fullok\pmd{cudafortran} &
+        \nonvendorok\pmd{nvidiahip} & \nope\pmd{hipfortran} &
+        \nonvendorok\pmd{nvidiasycl} & \nope\pmd{syclfortran} &
+        \fullok\pmd{openaccc} & \fullok\pmd{openaccfortran} &
+        \prettyok\pmd{nvidiaopenmpc} & \prettyok\pmd{nvidiaopenmpfortran} &
+        \fullok\pmd{nvidiastandardc} & \fullok\pmd{nvidiastandardfortran} &
+        \nonvendorok\pmd{nvidiakokkosc} & \somesupport\pmd{nvidiakokkosfortran} &
+        \nonvendorok\pmd{nvidiaalpakac} & \nope\pmd{nvidiaalpakafortran} &
+        \prettyok\nonvendorok\pmd{nvidiapython}
+        \\
+    AMD &
+        \indirectok\pmd{amdcudac} & \somesupport\pmd{amdcudafortran} &
+        \fullok\pmd{amdhipc} & \nope\pmdagain{hipfortran} &
+        \indirectok\pmd{amdsyclc} & \nope\pmdagain{syclfortran} &
+        \nonvendorok\pmd{amdopenaccc} & \nonvendorok/\somesupport\pmd{amdopenaccfortran} &
+        \fullok\pmd{amdopenmp} & \fullok\pmdagain{amdopenmp} &
+        \nope\pmd{amdstandard} & \nope\pmdagain{amdstandard} &
+        \nonvendorok\pmd{amdkokkosc} & \somesupport\pmdagain{nvidiakokkosfortran} &
+        \nonvendorok\pmd{amdalpakac} & \nope\pmdagain{nvidiaalpakafortran} &
+        \somesupport\pmd{amdpython}
+        \\
+    Intel &
+        \indirectok\pmd{intelcudac} & \nope\pmd{intelcudafortran} &
+        \somesupport\pmd{intelhipc} & \nope\pmdagain{hipfortran} &
+        \fullok\pmd{intelsyclc} & \nope\pmdagain{syclfortran} &
+        \somesupport\pmd{intelopenacc} & \somesupport\pmdagain{intelopenacc} &
+        \fullok\pmd{intelopenmp} & \fullok\pmd{intelopenmp} &
+        \nope\pmd{intelstandardc} & \prettyok\pmd{intelstandardfortran} &
+        \nonvendorok\pmd{intelkokkosc} & \somesupport\pmdagain{nvidiakokkosfortran} &
+        \somesupport\pmd{intelalpakac} & \nope\pmdagain{nvidiaalpakafortran} &
+        \somesupport\pmd{intelpython}\\
+\end{tabular}
+
+\begin{itemize}
+    \tightlist%
+    \item \ref{cudac}: CUDA C/C++, supported through CUDA Toolkit
+    \item \ref{cudafortran}: CUDA Fortran, proprietary Fortran extension supported by NVIDIA HPC SDK
+    \item \ref{nvidiahip}: HIP programs can directly use NVIDIA GPUs via a CUDA backend; HIP is maintained by AMD
+    \item \ref{hipfortran}: No such thing like HIP for Fortran
+    \item \ref{nvidiasycl}: SYCL can be used on NVIDIA GPUs with \emph{experimental} support either in 
+    \href{https://github.com/codeplaysoftware/sycl-for-cuda/blob/cuda/sycl/doc/GetStartedWithSYCLCompiler.md\#build-sycl-toolchain-with-support-for-nvidia-cuda}{SYCL} directly or in 
+    \href{https://github.com/intel/llvm/blob/sycl/sycl/doc/GetStartedGuide.md\#build-dpc-toolchain-with-support-for-nvidia-cuda}{DPC++}, 
+    or via \href{https://github.com/illuhad/hipSYCL}{hipSYCL}
+    \item \ref{syclfortran}: No such thing like SYCL for Fortran
+    \item \ref{openaccc}: OpenACC C/C++ supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by GCC C compiler and Clacc
+    \item \ref{openaccfortran}: OpenACC Fortran supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by GCC Fortran compiler and \href{https://ieeexplore.ieee.org/document/9651310}{Flacc}
+    \item \ref{nvidiaopenmpc}: OpenMP in C supported on NVIDIA GPUs through NVIDIA HPC SDK (but not full OpenMP feature set available), by GCC, and Clang
+    \item \ref{nvidiaopenmpfortran}: OpenMP in Fortran supported on NVIDIA GPUs through NVIDIA HPC SDK (but not full OpenMP feature set available), by GCC, and Flang
+    \item \ref{nvidiastandardc}: pSTL features supported on NVIDIA GPUs through NVIDIA HPC SDK
+    \item \ref{nvidiastandardfortran}: Standard Language parallel features supported on NVIDIA GPUs through NVIDIA HPC SDK
+    \item \ref{nvidiakokkosc}: Kokkos supports NVIDIA GPUs by calling CUDA as part of the compilation process
+    \item \ref{nvidiakokkosfortran}: Kokkos is a C++ model, but at least the authors provided an ISO C Binding example for Fortran
+    \item \ref{nvidiaalpakac}: Alpaka supports NVIDIA GPUs by calling CUDA as part of the compilation process
+    \item \ref{nvidiaalpakafortran}: Alpaka is a C++ model
+    \item \ref{nvidiapython}: There is a vast community of offloading Python code to NVIDIA GPUs, like CuPy, Numba, cuNumeric, and many others; NVIDIA actively supports a lot of them, but has no direct product like \emph{CUDA for Python}; so, the status is somewhere in between
+    \item \ref{amdcudac}: \href{github.com/ROCm-Developer-Tools/HIPIFY}{hipify} by AMD can translate CUDA calls to HIP calls which runs natively on AMD GPUs
+    \item \ref{amdcudafortran}: AMD offers a Source-to-Source translator to convert some CUDA Fortran functionality to OpenMP for AMD GPUs (\href{https://github.com/ROCmSoftwarePlatform/gpufort}{gpufort}); in addition, there are ROCm library bindings for Fortran in \href{https://github.com/ROCmSoftwarePlatform/hipfort}{hipfort}
+    OpenACC/CUDA Fortran Source-to-Source translator gpufort: https://github.com/ROCmSoftwarePlatform/gpufort
+    \item \ref{amdhipc}: HIP is the preferred native programming model for AMD GPUs
+    \item \ref{amdsyclc}: SYCL can use AMD GPUs, for example with \href{https://github.com/illuhad/hipSYCL}{hipSYCL} or \href{https://github.com/intel/llvm/blob/sycl/sycl/doc/GetStartedGuide.md\#build-dpc-toolchain-with-support-for-hip-amd}{DPC++ for HIP AMD}
+    \item \ref{amdopenaccc}: OpenACC C/C++ can be used on AMD GPUs via GCC or Clacc; also, \href{https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp}{Intel's OpenACC to OpenMP Source-to-Source translator} can be used to generate OpenMP directives from OpenACC directives
+    \item \ref{amdopenaccfortran}: OpenACC Fortran can be used on AMD GPUs via GCC; also, AMD's \href{https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp}{gpufort} Source-to-Source translator can move OpenACC Fortran code to OpenMP Fortran code, and also Intel's translator can work
+    \item \ref{amdopenmp}: AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: AOMP; it supports both C/C++ (Clang) and Fortran (Flang, \href{https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload}{example})
+    \item \ref{amdstandard}: Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs
+    \item \ref{amdkokkosc}: Kokkos supports AMD GPUs through HIP
+    \item \ref{amdalpakac}: Alpaka supports AMD GPUs through HIP
+    \item \ref{amdpython}: AMD does not officially support GPU programming with Python (also not semi-officially like NVIDIA), but third-party support is avaialble, for example through \href{https://numba.pydata.org/numba-doc/latest/roc/index.html}{Numba} or a \href{https://docs.cupy.dev/en/latest/install.html?highlight=rocm\#building-cupy-for-rocm-from-source}{HIP version of CuPy}
+    \item \ref{intelcudac}: \href{https://github.com/oneapi-src/SYCLomatic}{SYCLomatic} translates CUDA code to SYCL code, allowing it to run on Intel GPUs; also, Intel's \href{https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html}{DPC++ Compatability Tool} can transform CUDA to SYCL
+    \item \ref{intelcudafortran}: No direct support, only via ISO C bindings, but at least an example can be \href{https://github.com/codeplaysoftware/SYCL-For-CUDA-Examples/tree/master/examples/fortran_interface}{found on GitHub}; it's pretty scarce and not by Intel itself, though
+    \item \ref{intelhipc}: \href{https://github.com/CHIP-SPV/chip-spv}{CHIP-SPV} supports mapping CUDA and HIP to OpenCL and Intel's Level Zero, making it run on Intel GPUs
+    \item \ref{intelsyclc}: SYCL is the prime programming model for Intel GPUs; actually, SYCL is only a standard, while Intel's implementation of it is called DPC++ (\emph{Data Parallel C++}), which extends the SYCL standard in places
+    \item \ref{intelopenacc}: OpenACC can be used on Intel GPUs by translating the code to OpenMP with \href{https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp}{Intel's Source-to-Source translator}
+    \item \ref{intelopenmp}: Intel has \href{https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp/top.html}{extensive support for OpenMP} through their latest compilers
+    \item \ref{intelstandardc}: Currently, no (known) way to launch Standard-based parallel algorithms on Intel GPUs
+    \item \ref{intelstandardfortran}: With \href{https://www.intel.com/content/www/us/en/developer/articles/release-notes/fortran-compiler-release-notes.html}{Intel oneAPI 2022.3}, Intel supports DO CONCURRENT with GPU offloading
+    \item \ref{intelkokkosc}: Kokkos supports Intel GPUs through SYCL
+    \item \ref{intelalpakac}: \href{https://github.com/alpaka-group/alpaka/releases/tag/0.9.0}{Alpaka v0.9.0} introduces experimental SYCL support 
+    \item \ref{intelpython}: Not a lot of support available at the moment, but notably \href{https://intelpython.github.io/dpnp/}{DPNP}, a SYCL-based drop-in replacement for Numpy
+\end{itemize}

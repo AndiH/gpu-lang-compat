@@ -1,0 +1,45 @@
+body {
+    font-family: 'Source Sans Pro', 'PT Sans', Arial, sans-serif;
+}
+
+dl dt {
+  float: left;
+  width: 20px;
+  text-align: center;
+}
+
+dl dd {
+  margin-bottom: 1pt;
+  width: ;
+  margin-left: 18pt;
+}
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  border: none;
+}
+
+td {
+  border-right: 1px solid gray;
+  padding: 3px;
+  text-align: center;
+}
+table td:last-of-type {
+  border: none;
+}
+
+table tr td.level-1, table tr td.vendor {
+  font-weight: bold;
+}
+
+table tr td.level-2 {
+  font-weight: 600;
+}
+table tr td.etc {
+  font-style: italic;
+}
+ul li .number {
+  font-weight: bolder;
+}

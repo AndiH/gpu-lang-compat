@@ -1,0 +1,29 @@
+
+
+\colorlet{ok}{fzjgreen}
+\colorlet{prime}{fzjgreen!70!black}
+\colorlet{prettyok}{fzjgreen!60!fzjorange}
+\colorlet{nonvendorok}{fzjorange!90!black}
+\colorlet{indirectok}{fzjorange!90!white}
+\colorlet{somesupport}{fzjorange!50!fzjred}
+\colorlet{nope}{fzjred}
+\tikzset{prime/.style={}}
+%{\tikzset{prime/.style={draw=prime, very thick}}}
+\newcommand{\C}{C++}
+\newcommand{\Fortran}{F}
+\newcommand{\mycirc}[1]{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) {} [fill=#1, prime] (0, 0) circle [radius=1ex];}}
+\newcommand{\myno}[1]{\tikz[inner sep=0pt, outer sep=0pt]{\draw [draw=#1, very thick] (0, 0) -- ++(0.8ex, 0.8ex);}}
+\newcommand{\fullok}{\mycirc{ok}}
+%\newcommand{\prettyok}{\mycirc{green!50!orange}}
+\newcommand{\prettyok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [regular polygon, regular polygon sides=4, fill=prettyok, minimum size=3ex] at (0,0) {};}}
+%\newcommand{\nonvendorok}{\mycirc{orange}}
+\newcommand{\nonvendorok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [regular polygon, regular polygon sides=3, fill=nonvendorok, minimum size=3ex] at (0,0) {};}}
+%\newcommand{\indirectok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [regular polygon, regular polygon sides=3, fill=orange!90!white, minimum size=3ex, rotate=180] at (0,0) {};}}
+\newcommand{\indirectok}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [shape= semicircle, fill=indirectok, minimum size=1.33ex, rotate=180] at (0,0) {};}}
+%\newcommand{\somesupport}{\mycirc{orange!50!red}}
+\newcommand{\somesupport}{\tikz[inner sep=0pt, outer sep=0pt]{\node (X) [star, star point height=0.8ex, fill=somesupport, minimum size=3ex] at (0,0) {};}}
+%\newcommand{\nope}{\textcolor{red}{$\diagup$}}
+\newcommand{\nope}{\tikz[inner sep=0pt, outer sep=0pt]{\path (X) [draw=nope, thick] (0,0) -- ++(1.4ex,1.4ex);}}
+\newcounter{pmdesc}
+\newcommand{\pmd}[1]{\refstepcounter{pmdesc}\label{#1}\textsuperscript{\ref{#1}}}
+\newcommand{\pmdagain}[1]{\textsuperscript{\ref{#1}}}

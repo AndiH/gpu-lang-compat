@@ -1,0 +1,54 @@
+<section id="compat-matrix">
+	<dl>
+		{%- for state_name, state_description in data.get('states').items() %}
+		<dt>{{ state_description.get('symbol') }}</dt>
+		<dd>{{ state_description.get('description') }}</dd>
+		{%- endfor %}
+	</dl>
+	<table>
+		<thead>
+			{% set first_vendor = data.get('vendors').keys() | list | first %}
+			<tr>
+				<td class="empty"></td>
+				{%- for key, value in data.get('vendors').get(first_vendor).items() %}
+				<td {{ 'colspan="2"' if not key == 'etc' }} class="level-1{{ ' etc' if key == 'etc' }}">{{ key }}</td>
+				{%- endfor %}
+			</tr>
+			<tr>
+				<td class="empty"></td>
+				{%- for key, value in data.get('vendors').get(first_vendor).items() %}
+				{%- for kkey, vvalue in value.items() %}
+				<td class="level-2">{{ kkey }}</td>
+				{%- endfor %}
+				{%- endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{%- for vendor, models in data.get('vendors').items() %}
+			<tr>
+				<td class="vendor">{{ vendor }}</td>
+				{%- for model_name, languages in models.items() %}
+				{%- for language, description in languages.items() %}
+				<td class="status">
+					{%- for desc_values in description.values() %}
+					{%- if desc_values is string %}
+					{{ data.get('states').get(desc_values)['symbol'] }}
+					{%- else %}
+					{%- for desc_value in desc_values %}
+					{{ data.get('states').get(desc_value)['symbol'] }}
+					{%- endfor %}
+					{%- endif %}
+					{%- endfor -%}
+					<sup class="footnote" title="{{ data.get('descriptions').get(description.keys() | first) | striptags }}"><a href="#desc-{{ description.keys() | first }}">{{ footnotes.get(description.keys() | first).get('index') }}</a></sup></td>
+				{%- endfor %}
+				{%- endfor %}
+			</tr>
+			{%- endfor %}
+		</tbody>
+	</table>
+	<ul>
+		{%- for shortname, description in data.get('descriptions').items() %}
+		<li id="desc-{{ shortname }}"><span class="number">{{ footnotes.get(shortname).get('index') }}:</span> <span class="description">{{ footnotes.get(shortname).get('description') }}</span></li>
+		{%- endfor %}
+	</ul>
+</section>
