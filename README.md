@@ -14,6 +14,9 @@ Files:
 * `gpu-vendor-model-matrix.html`/`gpu-vendor-model-matrix.tex`: Example boilerplate code to augment the generated table. For HTML, this is not much beyond the CSS; but for LaTeX this also includes some important definitions; but I did not want to cascade it any further.
 * Pre-compiled examples:
 	- `gpu-vendor-model-matrix.table.html`/`gpu-vendor-model-matrix.table.tex`: Generated version of the raw data
-	- `gpu-vendor-model-matrix.table.pdf`: Typeset PDF from `gpu-vendor-model-matrix.tex`
+	- `gpu-vendor-model-matrix.table.pdf`: Typeset PDF from `gpu-vendor-model-matrix.tex` with XeLaTeX
+	- `gpu-vendor-model-matrix.table.svg`: Converted SVG from PDF with Inkscape
 
 Also, `_gen-symbols/` exist, which is part of my exploration for all of this. I just might need it if I change the icons.
+
+<img src="gpu-vendor-model-matrix.svg" />
