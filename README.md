@@ -11,11 +11,13 @@ Files:
 * `render_table.py`: Read in definitions from `compat.yml`, massage data, and generate HTML and/or LaTeX code. Can be either printed to screen and/or written to file. See `render_table.py -h`
 * `compat.yml`: All the raw data, in YAML. Starts with SVG code for status icons. Then come the status assessments in form of dictionaries. And finally, a list of descriptions of the assessments.
 * `table-template.in.html`/`table-template.in.tex`: The Jinja2 template files generating the respective code from the raw data. While a lot of the content is similar, there are some distinct differences – like how the footnotes are handled, because LaTeX is typeset while HTML is static.
-* `gpu-vendor-model-matrix.html`/`gpu-vendor-model-matrix.tex`: Example boilerplate code to augment the generated table. For HTML, this is not much beyond the CSS; but for LaTeX this also includes some important definitions; but I did not want to cascade it any further.
+* `gpu-vendor-model-matrix.skeleton.html`/`gpu-vendor-model-matrix.tex`: Example boilerplate code to augment the generated table. For HTML, this is not much beyond the CSS; but for LaTeX this also includes some important definitions; but I did not want to cascade it any further.
 * Pre-compiled examples:
 	- `gpu-vendor-model-matrix.table.html`/`gpu-vendor-model-matrix.table.tex`: Generated version of the raw data
-	- `gpu-vendor-model-matrix.table.pdf`: Typeset PDF from `gpu-vendor-model-matrix.tex` with XeLaTeX
-	- `gpu-vendor-model-matrix.table.svg`: Converted SVG from PDF with Inkscape
+	- `gpu-vendor-model-matrix.pdf`: Typeset PDF from `gpu-vendor-model-matrix.tex` with XeLaTeX
+	- `gpu-vendor-model-matrix.svg`: Converted SVG from PDF with Inkscape
+	- `gpu-vendor-model-matrix.html`: Simple container HTML page with inserted table and some style
+* `Makefile`: Generate all of these. Check out `make html pdf svg`.
 
 Also, `_gen-symbols/` exist, which is part of my exploration for all of this. I just might need it if I change the icons.
 

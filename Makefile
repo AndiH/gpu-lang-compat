@@ -1,11 +1,14 @@
-.PHONY: all latex-pdf inkscape-svg view-html
-all: gpu-vendor-model-matrix.table.tex gpu-vendor-model-matrix.table.html
-latex-pdf: gpu-vendor-model-matrix.pdf
+.PHONY: all all-table pdf svg html
+all: pdf svg html
+all-table: gpu-vendor-model-matrix.table.tex gpu-vendor-model-matrix.table.html
+pdf: gpu-vendor-model-matrix.pdf
+svg: gpu-vendor-model-matrix.svg
+html: gpu-vendor-model-matrix.html
 
 gpu-vendor-model-matrix.table.html: LANG=html
 gpu-vendor-model-matrix.table.tex: LANG=latex
-gpu-vendor-model-matrix.table.html: gpu-vendor-model-matrix.html table-template.in.html style.css render_table.py compat.yml Makefile
-gpu-vendor-model-matrix.table.tex: gpu-vendor-model-matrix.tex table-template.in.tex render_table.py compat.yml Makefile
+gpu-vendor-model-matrix.table.html: table-template.in.html style.css render_table.py compat.yml Makefile
+gpu-vendor-model-matrix.table.tex: table-template.in.tex render_table.py compat.yml Makefile
 
 gpu-vendor-model-matrix.table.tex gpu-vendor-model-matrix.table.html:
 	python3 render_table.py --format ${LANG}
@@ -18,5 +21,5 @@ gpu-vendor-model-matrix.svg: gpu-vendor-model-matrix.pdf
 	inkscape $$(PWD)/$< --export-area-drawing -o $$(PWD)/$@ --export-type=svg
 	svgo -i $@
 
-view-html: gpu-vendor-model-matrix.table.html
-	python3 -m http.server
+gpu-vendor-model-matrix.html: gpu-vendor-model-matrix.table.html gpu-vendor-model-matrix.skeleton.html
+	gsed '/<!-- insert_here -->/e cat gpu-vendor-model-matrix.table.html' gpu-vendor-model-matrix.skeleton.html > $@
