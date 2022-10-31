@@ -43,3 +43,13 @@ table tr td.etc {
 ul li .number {
   font-weight: bolder;
 }
+ul li .back {
+  font-size: smaller;
+  color: lightgray;
+  bottom: 2px;
+  position: relative;
+  padding-left: 2px;
+}
+ul li .back:hover {
+  color: gray;
+}

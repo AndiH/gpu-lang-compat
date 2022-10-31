@@ -165,44 +165,44 @@ vendors:
       Python:
         intelpython: somesupport
 descriptions:
-  cudac: "CUDA C/C++, supported through CUDA Toolkit"
-  cudafortran: "CUDA Fortran, proprietary Fortran extension supported by NVIDIA HPC SDK"
-  nvidiahip: "HIP programs can directly use NVIDIA GPUs via a CUDA backend; HIP is maintained by AMD"
+  cudac: "CUDA C/C++ is supported on NVIDIA GPUs through the <a href='https://developer.nvidia.com/cuda-toolkit'>CUDA Toolkit</a>"
+  cudafortran: "CUDA Fortran, a proprietary Fortran extension, is supported on NVIDIA GPUs via the <a href='https://developer.nvidia.com/hpc-sdk'>NVIDIA HPC SDK</a>"
+  nvidiahip: "<a href='https://github.com/ROCm-Developer-Tools/HIP'>HIP</a> programs can directly use NVIDIA GPUs via a CUDA backend; HIP is maintained by AMD"
   hipfortran: "No such thing like HIP for Fortran"
   nvidiasycl: 'SYCL can be used on NVIDIA GPUs with <em>experimental</em> support either in 
               <a href="https://github.com/codeplaysoftware/sycl-for-cuda/blob/cuda/sycl/doc/GetStartedWithSYCLCompiler.md#build-sycl-toolchain-with-support-for-nvidia-cuda">SYCL</a> directly or in <a href="https://github.com/intel/llvm/blob/sycl/sycl/doc/GetStartedGuide.md#build-dpc-toolchain-with-support-for-nvidia-cuda">DPC++</a>, 
               or via <a href="https://github.com/illuhad/hipSYCL">hipSYCL</a>'
   syclfortran: 'No such thing like SYCL for Fortran'
-  openaccc: 'OpenACC C/C++ supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by GCC C compiler and Clacc'
+  openaccc: 'OpenACC C/C++ supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by <a href="https://gcc.gnu.org/wiki/OpenACC">GCC C compiler</a> and in LLVM through <a href="https://csmd.ornl.gov/project/clacc">Clacc</a>'
   openaccfortran: 'OpenACC Fortran supported on NVIDIA GPUs directly (and best) through NVIDIA HPC SDK; additional, somewhat limited support by GCC Fortran compiler and <a href="https://ieeexplore.ieee.org/document/9651310">Flacc</a>'
-  nvidiaopenmpc: 'OpenMP in C++ supported on NVIDIA GPUs through NVIDIA HPC SDK (albeit with a few limits), by GCC, and Clang; see <a href="https://www.openmp.org/wp-content/uploads/2022_ECP_Community_BoF_Days-OpenMP_RoadMap_BoF.pdf">OpenMP ECP BoF on status in 2022</a>.'
+  nvidiaopenmpc: 'OpenMP in C++ supported on NVIDIA GPUs through NVIDIA HPC SDK (albeit <a href="https://docs.nvidia.com/hpc-sdk/compilers/hpc-compilers-user-guide/index.html#openmp-use">with a few limits</a>), by GCC, and Clang; see <a href="https://www.openmp.org/wp-content/uploads/2022_ECP_Community_BoF_Days-OpenMP_RoadMap_BoF.pdf">OpenMP ECP BoF on status in 2022</a>.'
   nvidiaopenmpfortran: 'OpenMP in Fortran supported on NVIDIA GPUs through NVIDIA HPC SDK (but not full OpenMP feature set available), by GCC, and Flang'
-  nvidiastandardc: 'pSTL features supported on NVIDIA GPUs through NVIDIA HPC SDK'
+  nvidiastandardc: 'pSTL features supported on NVIDIA GPUs through <a href="https://docs.nvidia.com/hpc-sdk/compilers/c++-parallel-algorithms/">NVIDIA HPC SDK</a>'
   nvidiastandardfortran: 'Standard Language parallel features supported on NVIDIA GPUs through NVIDIA HPC SDK'
-  nvidiakokkosc: 'Kokkos supports NVIDIA GPUs by calling CUDA as part of the compilation process'
+  nvidiakokkosc: '<a href="https://github.com/kokkos/kokkos">Kokkos</a> supports NVIDIA GPUs by calling CUDA as part of the compilation process'
   nvidiakokkosfortran: 'Kokkos is a C++ model, but an official compatibility layer (<a href="https://github.com/kokkos/kokkos-fortran-interop"><em>Fortran Language Compatibility Layer</em>, FLCL</a>) is available.'
-  nvidiaalpakac: 'Alpaka supports NVIDIA GPUs by calling CUDA as part of the compilation process'
+  nvidiaalpakac: '<a href="https://github.com/alpaka-group/alpaka">Alpaka</a> supports NVIDIA GPUs by calling CUDA as part of the compilation process'
   nvidiaalpakafortran: 'Alpaka is a C++ model'
-  nvidiapython: 'There is a vast community of offloading Python code to NVIDIA GPUs, like CuPy, Numba, cuNumeric, and many others; NVIDIA actively supports a lot of them, but has no direct product like <it>CUDA for Python</it>; so, the status is somewhere in between'
+  nvidiapython: 'There is a vast community of offloading Python code to NVIDIA GPUs, like <a href="https://cupy.dev/">CuPy</a>, <a href="https://numba.pydata.org/">Numba</a>, <a href="https://developer.nvidia.com/cunumeric">cuNumeric</a>, and many others; NVIDIA actively supports a lot of them, but has no direct product like <em>CUDA for Python</em>; so, the status is somewhere in between'
   amdcudac: '<a href="https://github.com/ROCm-Developer-Tools/HIPIFY">hipify</a> by AMD can translate CUDA calls to HIP calls which runs natively on AMD GPUs'
   amdcudafortran: 'AMD offers a Source-to-Source translator to convert some CUDA Fortran functionality to OpenMP for AMD GPUs (<a href="https://github.com/ROCmSoftwarePlatform/gpufort">gpufort</a>); in addition, there are ROCm library bindings for Fortran in <a href="https://github.com/ROCmSoftwarePlatform/hipfort">hipfort</a>
-    OpenACC/CUDA Fortran Source-to-Source translator <a href="https://github.com/ROCmSoftwarePlatform/gpufort">gpufort</a>.'
-  amdhipc: 'HIP is the preferred native programming model for AMD GPUs'
+    OpenACC/CUDA Fortran Source-to-Source translator'
+  amdhipc: '<a href="https://github.com/ROCm-Developer-Tools/HIP">HIP</a> is the preferred native programming model for AMD GPUs'
   amdsyclc: 'SYCL can use AMD GPUs, for example with <a href="https://github.com/illuhad/hipSYCL">hipSYCL</a> or <a href="https://github.com/intel/llvm/blob/sycl/sycl/doc/GetStartedGuide.md#build-dpc-toolchain-with-support-for-hip-amd">DPC++ for HIP AMD</a>'
   amdopenaccc: "OpenACC C/C++ can be used on AMD GPUs via GCC or Clacc; also, <a href=\"https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp\">Intel's OpenACC to OpenMP Source-to-Source translator</a> can be used to generate OpenMP directives from OpenACC directives"
   amdopenaccfortran: "OpenACC Fortran can be used on AMD GPUs via GCC; also, AMD's <a href=\"https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp\">gpufort</a> Source-to-Source translator can move OpenACC Fortran code to OpenMP Fortran code, and also Intel's translator can work"
-  amdopenmp: 'AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: AOMP; it supports both C/C++ (Clang) and Fortran (Flang, <a href="https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload">example</a>)'
+  amdopenmp: 'AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: <a href="https://github.com/ROCm-Developer-Tools/aomp">AOMP</a>; it supports both C/C++ (Clang) and Fortran (Flang, <a href="https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload">example</a>)'
   amdstandard: 'Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs'
   amdkokkosc: 'Kokkos supports AMD GPUs through HIP'
   amdalpakac: 'Alpaka supports AMD GPUs through HIP'
   amdpython: 'AMD does not officially support GPU programming with Python (also not semi-officially like NVIDIA), but third-party support is available, for example through <a href="https://numba.pydata.org/numba-doc/latest/roc/index.html">Numba</a> (currently inactive) or a <a href="https://docs.cupy.dev/en/latest/install.html?highlight=rocm#building-cupy-for-rocm-from-source">HIP version of CuPy</a>'
-  intelcudac: "<a href='https://github.com/oneapi-src/SYCLomatic'>SYCLomatic</a> translates CUDA code to SYCL code, allowing it to run on Intel GPUs; also, Intel's <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html'>DPC++ Compatability Tool</a> can transform CUDA to SYCL"
+  intelcudac: "<a href='https://github.com/oneapi-src/SYCLomatic'>SYCLomatic</a> translates CUDA code to SYCL code, allowing it to run on Intel GPUs; also, Intel's <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html'>DPC++ Compatibility Tool</a> can transform CUDA to SYCL"
   intelcudafortran: "No direct support, only via ISO C bindings, but at least an example can be <a href='https://github.com/codeplaysoftware/SYCL-For-CUDA-Examples/tree/master/examples/fortran_interface'>found on GitHub</a>; it's pretty scarce and not by Intel itself, though"
   intelhipc: "<a href='https://github.com/CHIP-SPV/chip-spv'>CHIP-SPV</a> supports mapping CUDA and HIP to OpenCL and Intel's Level Zero, making it run on Intel GPUs"
-  intelsyclc: "SYCL is the prime programming model for Intel GPUs; actually, SYCL is only a standard, while Intel's implementation of it is called DPC++ (<em>Data Parallel C++</em>), which extends the SYCL standard in places"
+  intelsyclc: "<a href='https://www.khronos.org/sycl/'>SYCL</a> is the prime programming model for Intel GPUs; actually, SYCL is only a standard, while Intel's implementation of it is called <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/data-parallel-c-plus-plus.html'>DPC++</a> (<em>Data Parallel C++</em>), which extends the SYCL standard in various places; actually actually, Intel namespaces everything <em>oneAPI</em> these days, so the <em>full</em> proper name is Intel oneAPI DPC++ (which incorporates a C++ compiler and also a library)"
   intelopenacc: "OpenACC can be used on Intel GPUs by translating the code to OpenMP with <a href='https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp'>Intel's Source-to-Source translator</a>"
   intelopenmp: "Intel has <a href='https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp/top.html'>extensive support for OpenMP</a> through their latest compilers"
-  prettyok: "Intel supports pSTL algorithms through their <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-library.html#gs.fifrh5'>oneAPI DPC++ Library</a> (oneDPL; <a href='https://github.com/oneapi-src/oneDPL'>GitHub</a>). It's heavily namespaced and not yet on the same level as NVIDIA."
+  prettyok: "Intel supports pSTL algorithms through their <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-library.html#gs.fifrh5'>DPC++ Library</a> (oneDPL; <a href='https://github.com/oneapi-src/oneDPL'>GitHub</a>). It's heavily namespaced and not yet on the same level as NVIDIA"
   intelstandardfortran: "With <a href='https://www.intel.com/content/www/us/en/developer/articles/release-notes/fortran-compiler-release-notes.html'>Intel oneAPI 2022.3</a>, Intel supports DO CONCURRENT with GPU offloading"
   intelkokkosc: "Kokkos supports Intel GPUs through SYCL"
   intelalpakac: "<a href='https://github.com/alpaka-group/alpaka/releases/tag/0.9.0'>Alpaka v0.9.0</a> introduces experimental SYCL support"

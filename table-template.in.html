@@ -5,7 +5,7 @@
 		<dd>{{ state_description.get('description') }}</dd>
 		{%- endfor %}
 	</dl>
-	<table>
+	<table id="compat-table">
 		<thead>
 			{% set first_vendor = data.get('vendors').keys() | list | first %}
 			<tr>
@@ -48,7 +48,7 @@
 	</table>
 	<ul>
 		{%- for shortname, description in data.get('descriptions').items() %}
-		<li id="desc-{{ shortname }}"><span class="number">{{ footnotes.get(shortname).get('index') }}:</span> <span class="description">{{ footnotes.get(shortname).get('description') }}</span></li>
+		<li id="desc-{{ shortname }}"><span class="number">{{ footnotes.get(shortname).get('index') }}:</span> <span class="description">{{ footnotes.get(shortname).get('description') }}</span><a href="#compat-table" class="back" title="Back to table">↺</a></li>
 		{%- endfor %}
 	</ul>
 </section>
