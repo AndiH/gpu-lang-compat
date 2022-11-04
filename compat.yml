@@ -34,7 +34,7 @@ vendors:
       C:
         nvidiahip: indirectok
       F:
-        hipfortran: nonvendorok
+        hipfortran: nope
     SYCL:
       C:
         nvidiasycl: nonvendorok
