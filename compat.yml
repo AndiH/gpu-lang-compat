@@ -158,7 +158,7 @@ vendors:
         nvidiakokkosfortran: somesupport
     ALPAKA:
       C:
-        intelalpakac: somesupport
+        intelalpakac: nonvendorok
       F:
         nvidiaalpakafortran: nope
     etc:
@@ -181,7 +181,7 @@ descriptions:
   nvidiastandardfortran: 'Standard Language parallel features supported on NVIDIA GPUs through NVIDIA HPC SDK'
   nvidiakokkosc: '<a href="https://github.com/kokkos/kokkos">Kokkos</a> supports NVIDIA GPUs by calling CUDA as part of the compilation process'
   nvidiakokkosfortran: 'Kokkos is a C++ model, but an official compatibility layer (<a href="https://github.com/kokkos/kokkos-fortran-interop"><em>Fortran Language Compatibility Layer</em>, FLCL</a>) is available.'
-  nvidiaalpakac: '<a href="https://github.com/alpaka-group/alpaka">Alpaka</a> supports NVIDIA GPUs by calling CUDA as part of the compilation process'
+  nvidiaalpakac: '<a href="https://github.com/alpaka-group/alpaka">Alpaka</a> supports NVIDIA GPUs by calling CUDA as part of the compilation process; also, an OpenMP backend can be used'
   nvidiaalpakafortran: 'Alpaka is a C++ model'
   nvidiapython: 'There is a vast community of offloading Python code to NVIDIA GPUs, like <a href="https://cupy.dev/">CuPy</a>, <a href="https://numba.pydata.org/">Numba</a>, <a href="https://developer.nvidia.com/cunumeric">cuNumeric</a>, and many others; NVIDIA actively supports a lot of them, but has no direct product like <em>CUDA for Python</em>; so, the status is somewhere in between'
   amdcudac: '<a href="https://github.com/ROCm-Developer-Tools/HIPIFY">hipify</a> by AMD can translate CUDA calls to HIP calls which runs natively on AMD GPUs'
@@ -194,7 +194,7 @@ descriptions:
   amdopenmp: 'AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: <a href="https://github.com/ROCm-Developer-Tools/aomp">AOMP</a>; it supports both C/C++ (Clang) and Fortran (Flang, <a href="https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload">example</a>)'
   amdstandard: 'Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs'
   amdkokkosc: 'Kokkos supports AMD GPUs through HIP'
-  amdalpakac: 'Alpaka supports AMD GPUs through HIP'
+  amdalpakac: 'Alpaka supports AMD GPUs through HIP or through an OpenMP backend'
   amdpython: 'AMD does not officially support GPU programming with Python (also not semi-officially like NVIDIA), but third-party support is available, for example through <a href="https://numba.pydata.org/numba-doc/latest/roc/index.html">Numba</a> (currently inactive) or a <a href="https://docs.cupy.dev/en/latest/install.html?highlight=rocm#building-cupy-for-rocm-from-source">HIP version of CuPy</a>'
   intelcudac: "<a href='https://github.com/oneapi-src/SYCLomatic'>SYCLomatic</a> translates CUDA code to SYCL code, allowing it to run on Intel GPUs; also, Intel's <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html'>DPC++ Compatibility Tool</a> can transform CUDA to SYCL"
   intelcudafortran: "No direct support, only via ISO C bindings, but at least an example can be <a href='https://github.com/codeplaysoftware/SYCL-For-CUDA-Examples/tree/master/examples/fortran_interface'>found on GitHub</a>; it's pretty scarce and not by Intel itself, though"
@@ -206,5 +206,5 @@ descriptions:
   prettyok: "Intel supports pSTL algorithms through their <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-library.html#gs.fifrh5'>DPC++ Library</a> (oneDPL; <a href='https://github.com/oneapi-src/oneDPL'>GitHub</a>). It's heavily namespaced and not yet on the same level as NVIDIA"
   intelstandardfortran: "With <a href='https://www.intel.com/content/www/us/en/developer/articles/release-notes/fortran-compiler-release-notes.html'>Intel oneAPI 2022.3</a>, Intel supports DO CONCURRENT with GPU offloading"
   intelkokkosc: "Kokkos supports Intel GPUs through SYCL"
-  intelalpakac: "<a href='https://github.com/alpaka-group/alpaka/releases/tag/0.9.0'>Alpaka v0.9.0</a> introduces experimental SYCL support"
+  intelalpakac: "<a href='https://github.com/alpaka-group/alpaka/releases/tag/0.9.0'>Alpaka v0.9.0</a> introduces experimental SYCL support; also, Alpaka can use OpenMP backends"
   intelpython: "Not a lot of support available at the moment, but notably <a href='https://intelpython.github.io/dpnp/'>DPNP</a>, a SYCL-based drop-in replacement for Numpy, and <a href='https://github.com/IntelPython/numba-dpex'>numba-dpex</a>, an extension of Numba for DPC++."
