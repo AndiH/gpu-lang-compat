@@ -5,8 +5,8 @@
     \begin{description}[Fortran]
     \ifdefined\tightlist\tightlist\fi%
         \item[\fullok] Full vendor support
-        \item[\prettyok] Vendor support, but not (yet) entirely comprehensive
         \item[\indirectok] Indirect, but comprehensive support, by vendor
+        \item[\prettyok] Vendor support, but not (yet) entirely comprehensive
         \item[\nonvendorok] Comprehensive support, but not by vendor
         \item[\somesupport] Limited, probably indirect support -- but at least some
         \item[\nope] No direct support available, but of course one could ISO-C-bind your way through it or directly link the libraries
@@ -64,7 +64,7 @@
         \item \ref{nvidiastandardfortran}: Standard Language parallel features supported on NVIDIA GPUs through NVIDIA HPC SDK
         \item \ref{nvidiakokkosc}: \href{https://github.com/kokkos/kokkos}{Kokkos} supports NVIDIA GPUs by calling CUDA as part of the compilation process
         \item \ref{nvidiakokkosfortran}: Kokkos is a C++ model, but an official compatibility layer (\href{https://github.com/kokkos/kokkos-fortran-interop}{\emph{Fortran Language Compatibility Layer}, FLCL}) is available.
-        \item \ref{nvidiaalpakac}: \href{https://github.com/alpaka-group/alpaka}{Alpaka} supports NVIDIA GPUs by calling CUDA as part of the compilation process
+        \item \ref{nvidiaalpakac}: \href{https://github.com/alpaka-group/alpaka}{Alpaka} supports NVIDIA GPUs by calling CUDA as part of the compilation process; also, an OpenMP backend can be used
         \item \ref{nvidiaalpakafortran}: Alpaka is a C++ model
         \item \ref{nvidiapython}: There is a vast community of offloading Python code to NVIDIA GPUs, like \href{https://cupy.dev/}{CuPy}, \href{https://numba.pydata.org/}{Numba}, \href{https://developer.nvidia.com/cunumeric}{cuNumeric}, and many others; NVIDIA actively supports a lot of them, but has no direct product like \emph{CUDA for Python}; so, the status is somewhere in between
         \item \ref{amdcudac}: \href{https://github.com/ROCm-Developer-Tools/HIPIFY}{hipify} by AMD can translate CUDA calls to HIP calls which runs natively on AMD GPUs
@@ -76,7 +76,7 @@
         \item \ref{amdopenmp}: AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: \href{https://github.com/ROCm-Developer-Tools/aomp}{AOMP}; it supports both C/C++ (Clang) and Fortran (Flang, \href{https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload}{example})
         \item \ref{amdstandard}: Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs
         \item \ref{amdkokkosc}: Kokkos supports AMD GPUs through HIP
-        \item \ref{amdalpakac}: Alpaka supports AMD GPUs through HIP
+        \item \ref{amdalpakac}: Alpaka supports AMD GPUs through HIP or through an OpenMP backend
         \item \ref{amdpython}: AMD does not officially support GPU programming with Python (also not semi-officially like NVIDIA), but third-party support is available, for example through \href{https://numba.pydata.org/numba-doc/latest/roc/index.html}{Numba} (currently inactive) or a \href{https://docs.cupy.dev/en/latest/install.html?highlight=rocm\#building-cupy-for-rocm-from-source}{HIP version of CuPy}
         \item \ref{intelcudac}: \href{https://github.com/oneapi-src/SYCLomatic}{SYCLomatic} translates CUDA code to SYCL code, allowing it to run on Intel GPUs; also, Intel\textquotesingle s \href{https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html}{DPC++ Compatibility Tool} can transform CUDA to SYCL
         \item \ref{intelcudafortran}: No direct support, only via ISO C bindings, but at least an example can be \href{https://github.com/codeplaysoftware/SYCL-For-CUDA-Examples/tree/master/examples/fortran_interface}{found on GitHub}; it\textquotesingle s pretty scarce and not by Intel itself, though
@@ -88,7 +88,7 @@
         \item \ref{prettyok}: Intel supports pSTL algorithms through their \href{https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-library.html\#gs.fifrh5}{DPC++ Library} (oneDPL; \href{https://github.com/oneapi-src/oneDPL}{GitHub}). It\textquotesingle s heavily namespaced and not yet on the same level as NVIDIA
         \item \ref{intelstandardfortran}: With \href{https://www.intel.com/content/www/us/en/developer/articles/release-notes/fortran-compiler-release-notes.html}{Intel oneAPI 2022.3}, Intel supports DO CONCURRENT with GPU offloading
         \item \ref{intelkokkosc}: Kokkos supports Intel GPUs through SYCL
-        \item \ref{intelalpakac}: \href{https://github.com/alpaka-group/alpaka/releases/tag/0.9.0}{Alpaka v0.9.0} introduces experimental SYCL support
+        \item \ref{intelalpakac}: \href{https://github.com/alpaka-group/alpaka/releases/tag/0.9.0}{Alpaka v0.9.0} introduces experimental SYCL support; also, Alpaka can use OpenMP backends
         \item \ref{intelpython}: Not a lot of support available at the moment, but notably \href{https://intelpython.github.io/dpnp/}{DPNP}, a SYCL-based drop-in replacement for Numpy, and \href{https://github.com/IntelPython/numba-dpex}{numba-dpex}, an extension of Numba for DPC++.
     \end{itemize}
 \end{frame}

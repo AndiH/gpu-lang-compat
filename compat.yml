@@ -2,14 +2,14 @@ states:
   fullok:
     symbol: '<svg height="11.92" overflow="visible" version="1.1" width="11.92"><g transform="translate(0,11.92) matrix(1 0 0 -1 0 0) translate(5.96,0) translate(0,5.96)" fill="#B9D25F" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 0 M 5.96 0 C 5.96 3.29 3.29 5.96 0 5.96 C -3.29 5.96 -5.96 3.29 -5.96 0 C -5.96 -3.29 -3.29 -5.96 0 -5.96 C 3.29 -5.96 5.96 -3.29 5.96 0 Z M 0 0" style="stroke:none"></path></g></svg>'
     description: Full vendor support
-  prettyok:
-    symbol: '<svg height="12.64" overflow="visible" version="1.1" width="12.64"><g transform="translate(0,12.64) matrix(1 0 0 -1 0 0) translate(6.32,0) translate(0,6.32)" fill="#D3C65D" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 6.32 6.32 L -6.32 6.32 L -6.32 -6.32 L 6.32 -6.32 Z" style="stroke:none"></path></g></svg>'
-    description: Vendor support, but not (yet) entirely comprehensive
   indirectok:
-    symbol: '<svg height="7.92" overflow="visible" version="1.1" width="15.85"><g transform="translate(0,7.92) matrix(1 0 0 -1 0 0) translate(7.92,0) translate(0,4.75)" fill="#FBBC6A" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M -7.92 3.17 C -7.92 -1.21 -4.38 -4.75 0 -4.75 C 4.38 -4.75 7.92 -1.21 7.92 3.17 Z" style="stroke:none"></path></g></svg>'
+    symbol: '<svg height="7.92" overflow="visible" version="1.1" width="15.85"><g transform="translate(0,7.92) matrix(1 0 0 -1 0 0) translate(7.92,0) translate(0,4.75)" fill="#D3C65D" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M -7.92 3.17 C -7.92 -1.21 -4.38 -4.75 0 -4.75 C 4.38 -4.75 7.92 -1.21 7.92 3.17 Z" style="stroke:none"></path></g></svg>'
     description: Indirect, but comprehensive support, by vendor
+  prettyok:
+    symbol: '<svg height="12.64" overflow="visible" version="1.1" width="12.64"><g transform="translate(0,12.64) matrix(1 0 0 -1 0 0) translate(6.32,0) translate(0,6.32)" fill="#FBBC6A" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 6.32 6.32 L -6.32 6.32 L -6.32 -6.32 L 6.32 -6.32 Z" style="stroke:none"></path></g></svg>'
+    description: Vendor support, but not (yet) entirely comprehensive
   nonvendorok:
-    symbol: '<svg height="13.4" overflow="visible" version="1.1" width="15.48"><g transform="translate(0,13.4) matrix(1 0 0 -1 0 0) translate(7.74,0) translate(0,4.47)" fill="#E1A251" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 8.94 L -7.74 -4.47 L 7.74 -4.47 Z" style="stroke:none"></path></g></svg>'
+    symbol: '<svg height="13.4" overflow="visible" version="1.1" width="15.48"><g transform="translate(0,13.4) matrix(1 0 0 -1 0 0) translate(7.74,0) translate(0,4.47)" fill="#C7DB7F" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 8.94 L -7.74 -4.47 L 7.74 -4.47 Z" style="stroke:none"></path></g></svg>'
     description: Comprehensive support, but not by vendor
   somesupport:
     symbol: '<svg height="16.17" overflow="visible" version="1.1" width="17"><g transform="translate(0,16.17) matrix(1 0 0 -1 0 0) translate(8.5,0) translate(0,7.23)" fill="#F38966" stroke="#000000" stroke-width="0.4pt" color="#000000"><path d="M 0 8.94 L -2.45 3.37 L -8.5 2.76 L -3.97 -1.29 L -5.25 -7.23 L 0 -4.17 L 5.25 -7.23 L 3.97 -1.29 L 8.5 2.76 L 2.45 3.37 Z" style="stroke:none"></path></g></svg>'
