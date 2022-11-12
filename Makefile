@@ -22,4 +22,5 @@ gpu-vendor-model-matrix.svg: gpu-vendor-model-matrix.pdf
 	svgo -i $@
 
 gpu-vendor-model-matrix.html: gpu-vendor-model-matrix.table.html gpu-vendor-model-matrix.skeleton.html
+	sed -i 's/B9D25F/85924E/' gpu-vendor-model-matrix.table.html
 	gsed '/<!-- insert_here -->/e cat gpu-vendor-model-matrix.table.html' gpu-vendor-model-matrix.skeleton.html > $@
