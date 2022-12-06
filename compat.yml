@@ -148,7 +148,7 @@ vendors:
         intelopenmp: fullok
     Standard:
       C:
-        prettyok: nope
+        intelstandardc: prettyok
       F:
         intelstandardfortran: prettyok
     Kokkos:
@@ -203,7 +203,7 @@ descriptions:
   intelsyclc: "<a href='https://www.khronos.org/sycl/'>SYCL</a> is the prime programming model for Intel GPUs; actually, SYCL is only a standard, while Intel's implementation of it is called <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/data-parallel-c-plus-plus.html'>DPC++</a> (<em>Data Parallel C++</em>), which extends the SYCL standard in various places; actually actually, Intel namespaces everything <em>oneAPI</em> these days, so the <em>full</em> proper name is Intel oneAPI DPC++ (which incorporates a C++ compiler and also a library)"
   intelopenacc: "OpenACC can be used on Intel GPUs by translating the code to OpenMP with <a href='https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp'>Intel's Source-to-Source translator</a>"
   intelopenmp: "Intel has <a href='https://www.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp/top.html'>extensive support for OpenMP</a> through their latest compilers"
-  prettyok: "Intel supports pSTL algorithms through their <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-library.html#gs.fifrh5'>DPC++ Library</a> (oneDPL; <a href='https://github.com/oneapi-src/oneDPL'>GitHub</a>). It's heavily namespaced and not yet on the same level as NVIDIA"
+  intelstandardc: "Intel supports pSTL algorithms through their <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-library.html#gs.fifrh5'>DPC++ Library</a> (oneDPL; <a href='https://github.com/oneapi-src/oneDPL'>GitHub</a>). It's heavily namespaced and not yet on the same level as NVIDIA"
   intelstandardfortran: "With <a href='https://www.intel.com/content/www/us/en/developer/articles/release-notes/fortran-compiler-release-notes.html'>Intel oneAPI 2022.3</a>, Intel supports DO CONCURRENT with GPU offloading"
   intelkokkosc: "Kokkos supports Intel GPUs through SYCL"
   intelalpakac: "<a href='https://github.com/alpaka-group/alpaka/releases/tag/0.9.0'>Alpaka v0.9.0</a> introduces experimental SYCL support; also, Alpaka can use OpenMP backends"
