@@ -104,9 +104,9 @@ vendors:
         amdopenmp: fullok
     Standard:
       C:
-        amdstandard: nope
+        amdstandardc: somesupport
       F:
-        amdstandard: nope
+        amdstandardfortran: nope
     Kokkos:
       C:
         amdkokkosc: nonvendorok
@@ -192,7 +192,8 @@ descriptions:
   amdopenaccc: "OpenACC C/C++ can be used on AMD GPUs via GCC or Clacc; also, <a href=\"https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp\">Intel's OpenACC to OpenMP Source-to-Source translator</a> can be used to generate OpenMP directives from OpenACC directives"
   amdopenaccfortran: "OpenACC Fortran can be used on AMD GPUs via GCC; also, AMD's <a href=\"https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp\">gpufort</a> Source-to-Source translator can move OpenACC Fortran code to OpenMP Fortran code, and also Intel's translator can work"
   amdopenmp: 'AMD offers a dedicated, Clang-based compiler for using OpenMP on AMD GPUs: <a href="https://github.com/ROCm-Developer-Tools/aomp">AOMP</a>; it supports both C/C++ (Clang) and Fortran (Flang, <a href="https://github.com/ROCm-Developer-Tools/aomp/tree/aomp-dev/examples/fortran/simple_offload">example</a>)'
-  amdstandard: 'Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs'
+  amdstandardc: "Intel's DPC++ (oneAPI) can be <a href=\"https://intel.github.io/llvm-docs/GetStartedGuide.html#build-dpc-toolchain-with-support-for-hip-amd\">compiled with an experimental HIP AMD backend</a>, allowing to launch STL algorithms to AMD GPUs; caveats from Intel's STL support apply"
+  amdstandardfortran: 'Currently, no (known) way to launch Standard-based parallel algorithms on AMD GPUs'
   amdkokkosc: 'Kokkos supports AMD GPUs through HIP'
   amdalpakac: 'Alpaka supports AMD GPUs through HIP or through an OpenMP backend'
   amdpython: 'AMD does not officially support GPU programming with Python (also not semi-officially like NVIDIA), but third-party support is available, for example through <a href="https://numba.pydata.org/numba-doc/latest/roc/index.html">Numba</a> (currently inactive) or a <a href="https://docs.cupy.dev/en/latest/install.html?highlight=rocm#building-cupy-for-rocm-from-source">HIP version of CuPy</a>'
