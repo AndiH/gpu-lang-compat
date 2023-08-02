@@ -34,7 +34,7 @@ def render_html(data, footnotes, args):
     environment = Environment(loader=FileSystemLoader('.'))
     template = environment.get_template(args.template_html)
     return template.render(data=data, footnotes=footnotes)
-def render_tex(data, args):
+def render_tex(data, file):
     '''
     Since LaTeX uses a lot of curly braces, it's useful to define custom Jinja strings.
     '''
@@ -51,7 +51,7 @@ def render_tex(data, args):
         autoescape=False,
         loader=FileSystemLoader(".")
     )
-    template = environment.get_template(args.template_latex)
+    template = environment.get_template(file)
     return template.render(data=data)
 
 def main(args):
@@ -70,19 +70,24 @@ def main(args):
                 output.write(rendered_html)
     if 'latex' in args.format:
         preprocess_tex(data=table)
-        rendered_tex = render_tex(data=table, args=args)
-        if args.print:
-            print(rendered_tex)
-        if args.write:
-            with open(args.output_latex, mode="w", encoding="utf-8") as output:
-                output.write(rendered_tex)
+        for (infile, outfile) in zip([args.template_latex_legend, args.template_latex_table, args.template_latex_descriptions], [args.output_latex_legend, args.output_latex_table, args.output_latex_descriptions]):
+            rendered_tex = render_tex(data=table, file=infile)
+            if args.print:
+                print(rendered_tex)
+            if args.write:
+                with open(outfile, mode="w", encoding="utf-8") as output:
+                    output.write(rendered_tex)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Generate GPU Vendor-Programming Compatibility Matrix raw files. Files need to be input to proper documents.''')
     parser.add_argument('--format', '-f', choices=['html', 'latex'], nargs='+', help='Generate table in this format(s)', required=True)
     parser.add_argument('--input', help='YAML input with all the info', default="compat.yml")
-    parser.add_argument('--template-latex',  help='Jinja template for LaTeX', default="table-template.in.tex")
-    parser.add_argument('--output-latex',  help='File to write for LaTeX', default="gpu-vendor-model-matrix.table.tex")
+    parser.add_argument('--template-latex-legend',  help='Jinja template for LaTeX (legend part)', default="table-template--legend.in.tex")
+    parser.add_argument('--template-latex-table',  help='Jinja template for LaTeX (table part)', default="table-template--table.in.tex")
+    parser.add_argument('--template-latex-descriptions',  help='Jinja template for LaTeX (descriptions part)', default="table-template--descriptions.in.tex")
+    parser.add_argument('--output-latex-legend',  help='File to write for LaTeX (legend part)', default="gpu-vendor-model-matrix.table.legend.tex")
+    parser.add_argument('--output-latex-table',  help='File to write for LaTeX (table part)', default="gpu-vendor-model-matrix.table.table.tex")
+    parser.add_argument('--output-latex-descriptions',  help='File to write for LaTeX (descriptions part)', default="gpu-vendor-model-matrix.table.descriptions.tex")
     parser.add_argument('--template-html', help='Jinja template for HTML', default="table-template.in.html")
     parser.add_argument('--output-html', help='File to write for HTML', default="gpu-vendor-model-matrix.table.html")
     parser.add_argument('--print', '-p', help='Print generated code to screen', default=False, action='store_true')

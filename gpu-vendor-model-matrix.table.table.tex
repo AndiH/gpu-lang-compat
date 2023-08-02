@@ -1,0 +1,29 @@
+\begin{tabular}{c|cc|cc|cc|cc|cc|cc|cc|cc|c}
+  &
+        \multicolumn{2}{c}{CUDA} &
+        \multicolumn{2}{c}{HIP} &
+        \multicolumn{2}{c}{SYCL} &
+        \multicolumn{2}{c}{OpenACC} &
+        \multicolumn{2}{c}{OpenMP} &
+        \multicolumn{2}{c}{Standard} &
+        \multicolumn{2}{c}{Kokkos} &
+        \multicolumn{2}{c}{ALPAKA} &
+        \\
+  &
+        \C &\F &
+        \C &\F &
+        \C &\F &
+        \C &\F &
+        \C &\F &
+        \C &\F &
+        \C &\F &
+        \C &\F &
+        \Python 
+        \\
+  NVIDIA &
+  \fullok\refwithstate{cudac} & \fullok\refwithstate{cudafortran} & \indirectok\refwithstate{nvidiahip} & \nope\refwithstate{nvidiahipfortran} & \nonvendorok\refwithstate{nvidiasycl} & \nope\refwithstate{syclfortran} & \fullok\refwithstate{openaccc} & \fullok\refwithstate{openaccfortran} & \prettyok\fullok\refwithstate{nvidiaopenmpc} & \prettyok\fullok\refwithstate{nvidiaopenmpfortran} & \fullok\refwithstate{nvidiastandardc} & \fullok\refwithstate{nvidiastandardfortran} & \nonvendorok\refwithstate{nvidiakokkosc} & \somesupport\refwithstate{nvidiakokkosfortran} & \nonvendorok\refwithstate{nvidiaalpakac} & \nope\refwithstate{nvidiaalpakafortran} & \prettyok\nonvendorok\refwithstate{nvidiapython} \\
+  AMD &
+  \indirectok\refwithstate{amdcudac} & \somesupport\refwithstate{amdcudafortran} & \fullok\refwithstate{amdhipc} & \nope\refwithstate{nvidiahipfortran} & \indirectok\refwithstate{amdsyclc} & \nope\refwithstate{syclfortran} & \nonvendorok\refwithstate{amdopenaccc} & \nonvendorok\somesupport\refwithstate{amdopenaccfortran} & \fullok\refwithstate{amdopenmp} & \fullok\refwithstate{amdopenmp} & \somesupport\refwithstate{amdstandardc} & \nope\refwithstate{amdstandardfortran} & \nonvendorok\refwithstate{amdkokkosc} & \somesupport\refwithstate{nvidiakokkosfortran} & \nonvendorok\refwithstate{amdalpakac} & \nope\refwithstate{nvidiaalpakafortran} & \somesupport\refwithstate{amdpython} \\
+  Intel &
+  \indirectok\refwithstate{intelcudac} & \nope\refwithstate{intelcudafortran} & \somesupport\refwithstate{intelhipc} & \nope\refwithstate{intelhipfortran} & \fullok\refwithstate{intelsyclc} & \nope\refwithstate{syclfortran} & \somesupport\refwithstate{intelopenacc} & \somesupport\refwithstate{intelopenacc} & \fullok\refwithstate{intelopenmp} & \fullok\refwithstate{intelopenmp} & \prettyok\refwithstate{intelstandardc} & \prettyok\refwithstate{intelstandardfortran} & \nonvendorok\refwithstate{intelkokkosc} & \somesupport\refwithstate{nvidiakokkosfortran} & \nonvendorok\refwithstate{intelalpakac} & \nope\refwithstate{nvidiaalpakafortran} & \somesupport\refwithstate{intelpython} \\
+  \end{tabular}
