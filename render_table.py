@@ -34,7 +34,7 @@ def render_html(data, footnotes, args):
     environment = Environment(loader=FileSystemLoader('.'))
     template = environment.get_template(args.template_html)
     return template.render(data=data, footnotes=footnotes)
-def render_tex(data, file):
+def render_tex(data, file, flat_dict):
     '''
     Since LaTeX uses a lot of curly braces, it's useful to define custom Jinja strings.
     '''
@@ -52,7 +52,7 @@ def render_tex(data, file):
         loader=FileSystemLoader(".")
     )
     template = environment.get_template(file)
-    return template.render(data=data)
+    return template.render(data=data, flat_dict=flat_dict)
 
 def main(args):
     with open(args.input, 'r') as f:
@@ -70,8 +70,25 @@ def main(args):
                 output.write(rendered_html)
     if 'latex' in args.format:
         preprocess_tex(data=table)
+        flat_dict = {}
+        for vendor, models in table['vendors'].items():
+            for model, languages in models.items():
+                for language, tagstatuses in languages.items():
+                    for tag, status in tagstatuses.items():
+                        _this_flat_dict = {
+                                'vendor': vendor,
+                                'model': model,
+                                'language': language,
+                                'status': status
+                            }
+                        if tag in table['references']:
+                            _this_flat_dict['reference'] = table['references'][tag]
+                        if tag not in flat_dict:
+                            flat_dict[tag] = []
+                        flat_dict[tag].append(_this_flat_dict)
+                        import pprint
         for (infile, outfile) in zip([args.template_latex_legend, args.template_latex_table, args.template_latex_descriptions], [args.output_latex_legend, args.output_latex_table, args.output_latex_descriptions]):
-            rendered_tex = render_tex(data=table, file=infile)
+            rendered_tex = render_tex(data=table, file=infile, flat_dict=flat_dict)
             if args.print:
                 print(rendered_tex)
             if args.write:

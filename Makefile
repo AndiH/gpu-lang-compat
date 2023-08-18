@@ -24,3 +24,9 @@ gpu-vendor-model-matrix.svg: gpu-vendor-model-matrix.pdf
 gpu-vendor-model-matrix.html: gpu-vendor-model-matrix.table.html gpu-vendor-model-matrix.skeleton.html
 	sed -i 's/B9D25F/85924E/' gpu-vendor-model-matrix.table.html
 	gsed '/<!-- insert_here -->/e cat gpu-vendor-model-matrix.table.html' gpu-vendor-model-matrix.skeleton.html > $@
+
+# SPECIAL RULES
+
+gpu-vendor-model-matrix.table.descriptions.paper.tex: LANG=latex
+gpu-vendor-model-matrix.table.descriptions.paper.tex: compat.yml Makefile table-template--descriptions.in.paper.tex
+	python3 render_table.py --format ${LANG} --template-latex-descriptions table-template--descriptions.in.paper.tex --output-latex-descriptions $@

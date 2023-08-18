@@ -2,6 +2,8 @@
 
 There are three vendors of HPC-grade GPUs (NVIDIA, AMD, Intel), and many different programming models to use the devices for general computing. It's a zoo. For a presentation, I assessed the status of the possible combinations of some more established programming models.
 
+**BRANCH: `dev-p3hpc23`. This is an WIP branch of update the material significantly for submission as a SC23 workshop paper. The infrastructure has also been reworked. Only TeX is up-to-date in this branch, currently!**
+
 Since I needed this Compatibility Matrix both in PDF form (for presentations) and HTML form (for a blog), I wrote a little Python tool which consumes a definition file and generates HTML and LaTeX from it.
 
 The tool – `render_table.py` – uses Jinja2 templates to create the respective overview tables and descriptions. The data source is `compat.yml`.
