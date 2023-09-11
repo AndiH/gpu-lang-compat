@@ -1,0 +1,318 @@
+@ArtifactSoftware{CUDA,
+	title = {CUDA Toolkit},
+	author = {NVIDIA},
+	%organization = {NVIDIA},
+	%address = {Vienna, Austria},
+	%year = {2023},
+	url = {https://developer.nvidia.com/cuda-toolkit},
+}
+@ArtifactSoftware{CUDAFortran,
+	title = {CUDA Fortran},
+	%author = {{NVIDIA CUDA Team}},
+	author = {NVIDIA},
+	%address = {Vienna, Austria},
+	%year = {2023},
+	url = {https://developer.nvidia.com/cuda-fortran},
+}
+@ArtifactSoftware{HIP,
+	title = {HIP},
+	author = {AMD},
+	%year = {2023},
+	url = {https://rocm.docs.amd.com/projects/HIP/en/latest/},
+}
+@ArtifactSoftware{hipfort,
+	title = {hipfort},
+	author = {AMD},
+	%year = {2023},
+	url = {https://rocm.docs.amd.com/projects/hipfort/en/latest/},
+}
+@ArtifactSoftware{intelllvm,
+	title = {oneAPI DPC++ Compiler},
+	author = {Intel and Contributors},
+	%year = {2023},
+	url = {https://github.com/intel/llvm},
+	note = {LLVM-fork with DPC++ support by Intel.}
+}
+@inproceedings{opensyclproceedings,
+  doi = {10.1145/3529538.3530005},
+  url = {https://doi.org/10.1145/3529538.3530005},
+  year = {2022},
+  month = may,
+  publisher = {{ACM}},
+  author = {Aksel Alpay and B{\'{a}}lint Soproni and Holger W\"{u}nsche and Vincent Heuveline},
+  title = {Exploring the possibility of a {hipSYCL}-based implementation of {oneAPI}},
+  booktitle = {International Workshop on {OpenCL}}
+}
+@ArtifactSoftware{khronossycl,
+	title = {SYCL},
+	author = {Khronos Group},
+	%year = {2023},
+	url = {https://www.khronos.org/sycl/}
+}
+@ArtifactSoftware{nvhpc,
+	title = {NVIDIA HPC SDK},
+	author = {NVIDIA},
+	%year = {2023},
+	url = {https://developer.nvidia.com/hpc-sdk}
+}
+@ArtifactSoftware{gccopenacc,
+	title = {GCC OpenACC},
+	author = {GCC},
+	%year = {2023},
+	url = {https://gcc.gnu.org/wiki/OpenACC}
+}
+@INPROCEEDINGS{claccieee,
+  author={Denny, Joel E. and Lee, Seyong and Vetter, Jeffrey S.},
+  booktitle={2018 IEEE/ACM 5th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)}, 
+  title={CLACC: Translating OpenACC to OpenMP in Clang}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={18-29},
+  doi={10.1109/LLVM-HPC.2018.8639349}
+}
+@INPROCEEDINGS{flaccieee,
+  author={Clement, Valentin and Vetter, Jeffrey S.},
+  booktitle={2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)}, 
+  title={Flacc: Towards OpenACC support for Fortran in the LLVM Ecosystem}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={12-19},
+  doi={10.1109/LLVMHPC54804.2021.00007}
+}
+@INPROCEEDINGS{jarmusch22,
+  author={Jarmusch, Aaron and Liu, Aaron and Munley, Christian and Horta, Daniel and Ravichandran, Vaidhyanathan and Denny, Joel and Friedline, Kyle and Chandrasekaran, Sunita},
+  booktitle={2022 Workshop on Accelerator Programming Using Directives (WACCPD)},
+  title={Analysis of Validating and Verifying OpenACC Compilers 3.0 and Above},
+  year={2022},
+  volume={},
+  number={},
+  pages={1-10},
+  doi={10.1109/WACCPD56842.2022.00006}
+}
+@ArtifactSoftware{hpepe,
+	title = {HPE Cray Programming Environment},
+	author = {HPE},
+	%year = {2023},
+	url = {https://www.hpe.com/psnow/doc/a50002303enw}
+}
+@ArtifactSoftware{clangopenmp,
+	title = {Clang OpenMP},
+	author = {LLVM/Clang Developers},
+	%year = {2023},
+	url = {https://clang.llvm.org/docs/OpenMPSupport.html}
+}
+@ArtifactSoftware{gccopenmp,
+	title = {GCC OpenMP},
+	author = {GCC Developers},
+	%year = {2023},
+	url = {https://gcc.gnu.org/wiki/openmp}
+}
+@ArtifactSoftware{flang,
+	title = {Flang},
+	author = {LLVM/Flang},
+	%year = {2023},
+	url = {https://flang.llvm.org/}
+}
+@article{kokkos,
+  author={Trott, Christian R. and Lebrun-Grandié, Damien and Arndt, Daniel and Ciesko, Jan and Dang, Vinh and Ellingwood, Nathan and Gayatri, Rahulkumar and Harvey, Evan and Hollman, Daisy S. and Ibanez, Dan and Liber, Nevin and Madsen, Jonathan and Miles, Jeff and Poliakoff, David and Powell, Amy and Rajamanickam, Sivasankaran and Simberg, Mikael and Sunderland, Dan and Turcksin, Bruno and Wilke, Jeremiah},
+  journal={IEEE Transactions on Parallel and Distributed Systems},
+  title={Kokkos 3: Programming Model Extensions for the Exascale Era},
+  year={2022},
+  volume={33},
+  number={4},
+  pages={805-817},
+  doi={10.1109/TPDS.2021.3097283}
+}
+@inproceedings{alpaka,
+  author    = {{Matthes}, A. and {Widera}, R. and {Zenker}, E. and {Worpitz}, B. and
+               {Huebl}, A. and {Bussmann}, M.},
+  title     = {Tuning and optimization for a variety of many-core architectures without changing a single line of implementation code
+               using the Alpaka library},
+  archivePrefix = "arXiv",
+  eprint    = {1706.10086},
+  keywords  = {Computer Science - Distributed, Parallel, and Cluster Computing},
+  day       = {30},
+  month     = {06},
+  year      = {2017},
+  url       = {https://arxiv.org/abs/1706.10086},
+}
+@ArtifactSoftware{cunumeric,
+	title = {cuNumeric},
+	author = {NVIDIA},
+	%year = {2023},
+	url = {https://developer.nvidia.com/cunumeric}
+}
+@software{numba,
+  author       = {Siu Kwan Lam and
+                  stuartarchibald and
+                  Antoine Pitrou and
+                  Mark Florisson and
+                  Stan Seibert and
+                  Graham Markall and
+                  esc and
+                  Todd A. Anderson and
+                  Guilherme Leobas and
+                  rjenc29 and
+                  Michael Collison and
+                  luk-f-a and
+                  Jay Bourque and
+                  Aaron Meurer and
+                  Kaustubh and
+                  Travis E. Oliphant and
+                  Nick Riasanovsky and
+                  Michael Wang and
+                  densmirn and
+                  njwhite and
+                  Ethan Pronovost and
+                  Ehsan Totoni and
+                  Eric Wieser and
+                  Stefan Seefeld and
+                  Hernan Grecco and
+                  Andre Masella and
+                  Pearu Peterson and
+                  Isaac Virshup and
+                  Matty G and
+                  Itamar Turner-Trauring},
+  title        = {numba/numba: Version 0.57.1},
+  month        = jun,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {0.57.1},
+  doi          = {10.5281/zenodo.8087361},
+  url          = {https://doi.org/10.5281/zenodo.8087361}
+}
+@inproceedings{cupy,
+  author       = "Okuta, Ryosuke and Unno, Yuya and Nishino, Daisuke and Hido, Shohei and Loomis, Crissman",
+  title        = "CuPy: A NumPy-Compatible Library for NVIDIA GPU Calculations",
+  booktitle    = "Proceedings of Workshop on Machine Learning Systems (LearningSys) in The Thirty-first Annual Conference on Neural Information Processing Systems (NIPS)",
+  year         = "2017",
+  url          = "http://learningsys.org/nips17/assets/papers/paper_16.pdf"
+}
+@software{pycuda,
+  author       = {Kloeckner, Andreas and
+                  Wohlgemuth, Gert and
+                  Lee, Gregory and
+                  Rybak, Tomasz and
+                  Nitz, Alex and
+                  Chiang, David and
+                  Seibert, Stan and
+                  Bergtholdt, Martin and
+                  Unterthiner, Thomas and
+                  Markall, Graham and
+                  Kotak, Mit and
+                  Favre-Nicolin, Vincent and
+                  Opanchuk, Bogdan and
+                  Merry, Bruce and
+                  Pinto, Nicolas and
+                  Milo, Fabrizio and
+                  Collignon, Thomas and
+                  Rathgeber, Florian and
+                  Perkins, Simon and
+                  Rutsky, Vladimir and
+                  Catanzaro, Bryan and
+                  Park, Alex and
+                  Witherden, Freddie and
+                  E. Givon, Lev and
+                  Pfister, Luke and
+                  Brubaker, Marcus and
+                  ZA, RA and
+                  Hausammann, Loic and
+                  Gohlke, Christoph},
+  title        = {PyCUDA},
+  month        = jul,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {v2022.2.2},
+  doi          = {10.5281/zenodo.8121901},
+  url          = {https://doi.org/10.5281/zenodo.8121901}
+}
+@ArtifactSoftware{cudapython,
+	title = {CUDA Python},
+	author = {NVIDIA},
+	%year = {2023},
+	url = {https://nvidia.github.io/cuda-python/index.html}
+}
+@ArtifactSoftware{gpufort,
+	title = {GPUFORT},
+	author = {AMD},
+	%year = {2023},
+	url = {https://github.com/ROCmSoftwarePlatform/gpufort}
+}
+@ArtifactSoftware{aomp,
+	title = {AOMP},
+	author = {AMD},
+	%year = {2023},
+	url = {https://github.com/ROCm-Developer-Tools/aomp}
+}
+@ArtifactSoftware{rocstdpar,
+	title = {roc-stdpar},
+	author = {AMD},
+	%year = {2023},
+	url = {https://github.com/ROCmSoftwarePlatform/roc-stdpar}
+}
+@ArtifactSoftware{onedpl,
+	title = {oneDPL},
+	author = {Intel},
+	%year = {2023},
+	url = {https://oneapi-src.github.io/oneDPL/index.html}
+}
+@ArtifactSoftware{oneapi,
+	title = {oneAPI},
+	author = {Intel},
+	%year = {2023},
+	url = {https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html}
+}
+@ArtifactSoftware{syclomatic,
+	title = {SYCLomatic},
+	author = {Intel},
+	%year = {2023},
+	url = {https://github.com/oneapi-src/SYCLomatic}
+}
+@InProceedings{chipstar,
+author="Zhao, Jisheng
+and Bertoni, Colleen
+and Young, Jeffrey
+and Harms, Kevin
+and Sarkar, Vivek
+and Videau, Brice",
+editor="Singer, Jeremy
+and Elkhatib, Yehia
+and Blanco Heras, Dora
+and Diehl, Patrick
+and Brown, Nick
+and Ilic, Aleksandar",
+title="HIPLZ: Enabling Performance Portability for Exascale Systems",
+booktitle="Euro-Par 2022: Parallel Processing Workshops",
+year="2023",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="197--210",
+abstract="While heterogeneous computing has emerged as a dominant trend in current and future High-Performance Computing (HPC) systems, it is also widely recognized that this shift has led to increased software complexity due to a proliferation of programming systems for different heterogeneous processors. One such example is the Heterogeneous-Computing Interface for Portability from AMD (HIP), which is composed of a C Runtime API and C++ Kernel Language. Many HPC applications will likely use HIP on future exascale systems (e.g., Frontier and El Capitan), but HIP currently only targets AMD and NVIDIA processors. This limitation creates challenges for users who would also like to run their applications on exascale systems based on other architectures (e.g., Aurora, which is based on Intel hardware) that are currently not targeted by HIP.",
+isbn="978-3-031-31209-0"
+}
+@ArtifactSoftware{acc2mp,
+	title = {Intel Application Migration Tool for OpenACC to OpenMP API},
+	author = {Intel},
+	%year = {2023},
+	url = {https://github.com/intel/intel-application-migration-tool-for-openacc-to-openmp}
+}
+@ArtifactSoftware{dpctl,
+	title = {Data Parallel Control},
+	author = {Intel},
+	%year = {2023},
+	url = {https://github.com/IntelPython/dpctl}
+}
+@ArtifactSoftware{numba-dpex,
+	title = {Data-parallel Extension to Numba},
+	author = {Intel},
+	%year = {2023},
+	url = {https://github.com/IntelPython/numba-dpex}
+}
+@ArtifactSoftware{dpnp,
+	title = {Data Parallel Extension for Numpy},
+	author = {Intel},
+	%year = {2023},
+	url = {https://github.com/IntelPython/dpnp}
+}
