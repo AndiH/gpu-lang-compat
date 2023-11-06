@@ -1,0 +1,11 @@
+((* for tag, description in data.get('descriptions').items() *))
+((* set this_dict = flat_dict.get(tag)[0] *))
+((* set vendors = flat_dict.get(tag)|map(attribute='vendor')|join(', ') *))
+((* if flat_dict.get(tag)|length > 1 *))
+((* if flat_dict.get(tag)[0]['vendor'] == flat_dict.get(tag)[1]['vendor'] *))
+((* set vendors = flat_dict.get(tag)[0]['vendor'] *))
+((* endif *))
+((* endif *))
+\mymarker{((( tag )))}{((( vendors )))}{((( this_dict['model'] )))}{((( this_dict['language'] )))}{((( this_dict['status'] )))} ((( description ))) ((* if 'reference' in this_dict *)) \mycite{((( this_dict['reference'] )))} ((* endif +*))
+
+((* endfor *))
