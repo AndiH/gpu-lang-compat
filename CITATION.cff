@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: GPU Vendor/Programming Model Compatibility Table
+title: GPU Vendor/Programming Model Compatibility Overview
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -14,16 +14,19 @@ identifiers:
   - type: doi
     value: 10.34732/xdvblg-r1bvif
     description: Blogpost of Table
+  - type: doi
+    value: 10.1145/3624062.3624178
+    description: SC23 Workshop Paper of extended version (v2) of material with discussions
 repository-code: 'https://github.com/AndiH/gpu-lang-compat'
 abstract: >-
   There are three vendors of HPC-grade GPUs (NVIDIA, AMD,
   Intel), and many different programming models to use the
-  devices for general computing. It's a zoo. The table
+  devices for general computing. It's a zoo! The overview
   presents the status of the possible combinations of some
   more established programming models, given comments and
   details for every combination. The repository contains the
-  YAML raw data and scripts to generate tables (HTML, PDF
-  via LaTeX).
+  YAML raw data and scripts and templates to generate tables
+  (HTML, PDF via LaTeX (also SVG from PDF)).
 keywords:
   - Intel
   - AMD
@@ -35,5 +38,5 @@ keywords:
   - HIP
   - SYCL
 license: MIT
-version: '1.2'
-date-released: '2022-11-12'
+version: '2.0'
+date-released: '2023-11-13'
