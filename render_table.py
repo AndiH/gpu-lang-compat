@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # GPU-Vendor-Programming-Model-Compatibility Matrix Generator
-# Andreas Herten, Oct 2022
+# Andreas Herten, 2022, 2023
 
 import argparse
+import sys
 import subprocess
 import yaml
 from jinja2 import Environment, FileSystemLoader
@@ -93,19 +94,20 @@ def main(args):
                 print(rendered_tex)
             if args.write:
                 with open(outfile, mode="w", encoding="utf-8") as output:
+                    print(f'Writing to {outfile}', file=sys.stderr)
                     output.write(rendered_tex)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Generate GPU Vendor-Programming Compatibility Matrix raw files. Files need to be input to proper documents.''')
     parser.add_argument('--format', '-f', choices=['html', 'latex'], nargs='+', help='Generate table in this format(s)', required=True)
     parser.add_argument('--input', help='YAML input with all the info', default="compat.yml")
-    parser.add_argument('--template-latex-legend',  help='Jinja template for LaTeX (legend part)', default="table-template--legend.in.tex")
-    parser.add_argument('--template-latex-table',  help='Jinja template for LaTeX (table part)', default="table-template--table.in.tex")
-    parser.add_argument('--template-latex-descriptions',  help='Jinja template for LaTeX (descriptions part)', default="table-template--descriptions.in.tex")
+    parser.add_argument('--template-latex-legend',  help='Jinja template for LaTeX (legend part)', default="templates/table-template--legend.in.tex")
+    parser.add_argument('--template-latex-table',  help='Jinja template for LaTeX (table part)', default="templates/table-template--table.in.tex")
+    parser.add_argument('--template-latex-descriptions',  help='Jinja template for LaTeX (descriptions part)', default="templates/table-template--descriptions.in.tex")
     parser.add_argument('--output-latex-legend',  help='File to write for LaTeX (legend part)', default="gpu-vendor-model-matrix.table.legend.tex")
     parser.add_argument('--output-latex-table',  help='File to write for LaTeX (table part)', default="gpu-vendor-model-matrix.table.table.tex")
     parser.add_argument('--output-latex-descriptions',  help='File to write for LaTeX (descriptions part)', default="gpu-vendor-model-matrix.table.descriptions.tex")
-    parser.add_argument('--template-html', help='Jinja template for HTML', default="table-template.in.html")
+    parser.add_argument('--template-html', help='Jinja template for HTML', default="templates/table-template.in.html")
     parser.add_argument('--output-html', help='File to write for HTML', default="gpu-vendor-model-matrix.table.html")
     parser.add_argument('--print', '-p', help='Print generated code to screen', default=False, action='store_true')
     parser.add_argument('--write', '-w', help='Write generated code to file (set for disabling writing)', default=True, action='store_false')
