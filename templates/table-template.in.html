@@ -48,7 +48,10 @@
 	</table>
 	<ul>
 		{%- for shortname, description in data.get('descriptions').items() %}
-		<li id="desc-{{ shortname }}"><span class="number">{{ footnotes.get(shortname).get('index') }}:</span> <span class="description">{{ footnotes.get(shortname).get('description') }}</span><a href="#compat-table" class="back" title="Back to table">↺</a></li>
+		<li id="desc-{{ shortname }}"><span class="number">{{ footnotes.get(shortname).get('index') }}:</span> <span class="description">{{ footnotes.get(shortname).get('description') }}</span>{% if shortname in references[0] %}{{ references[0].get(shortname) }}{% endif %}<a href="#compat-table" class="back" title="Back to table">↺</a></li>
 		{%- endfor %}
 	</ul>
+</section>
+<section id="references">
+	{{ references[1] }}
 </section>

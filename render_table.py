@@ -22,6 +22,43 @@ def preprocess_html(data):
         }
         i += 1
     return footnotes
+def gen_references(data):
+    """
+    A horrible, hacky way to get LaTeX-style references in HTML
+    Basic idea: We use the pandoc functionality to generate references with --citeproc
+    Scheme:
+    - Prepare reference for each element to be of form [@ref1,@ref2]
+    - Prefix this string with the identifier tag of each element
+    - Assemble a large, multi-line string to be passed to pandoc, because we need to have all elements at once to handle repeated references
+    - Use call to Pandoc to convert the ad-hoc generated string into a HTML representation of the references
+    - Split the HTML into the individual entries and the bibliography
+    - Parse the individual entries to extract the previously added identification tag, which goes into the look-up dict
+
+    This is not fast and fragile. I hope it lasts.
+    """
+    import re
+    from bs4 import BeautifulSoup
+    refs = data['references']
+    prepped_refs = {}
+    for tag, references in refs.items():
+        references = [f'@{ref}' for ref in references.split(',')]
+        prepped_refs[tag] = '[' + ';'.join(references) + ']'
+    combinedstring = str()
+    for tag, prepped_ref in prepped_refs.items():
+        combinedstring += f'{tag}: ' + prepped_ref + '\n\n'
+    echo = subprocess.Popen(['echo', combinedstring], stdout=subprocess.PIPE)
+    pandoc_return = subprocess.check_output(['pandoc', '--from=markdown', '--to=html', '--citeproc', '--bibliography=references.bib', '--wrap=none', '--csl=apa-numeric-superscript-brackets--no-superscript.csl'], stdin=echo.stdout).strip().decode('utf-8')
+    separated_references = re.split('(<div id="refs")', pandoc_return)
+    reference_numbers = separated_references[0]
+    reference_descriptions = separated_references[1] + separated_references[2]  # split string is separated out in original output
+    tag_ref_numbers = {}
+    for parsed_reference_number in reference_numbers.split('\n'):
+        soup = BeautifulSoup(parsed_reference_number, 'html.parser')
+        for p in soup.find_all('p'):
+            _tag, _ref_html = p.contents
+            _tag = _tag.replace(':', '').strip()  # remove temporary colon
+            tag_ref_numbers[_tag] = str(_ref_html)
+    return tag_ref_numbers, reference_descriptions
 def preprocess_tex(data):
     '''
     In the YAML overview document, links are written in HTML.
@@ -31,10 +68,10 @@ def preprocess_tex(data):
         echo = subprocess.Popen(['echo', description], stdout=subprocess.PIPE)
         new_description = subprocess.check_output(['pandoc', '--from=html', '--to=latex', '--wrap=none'], stdin=echo.stdout).strip().decode('utf-8')
         data['descriptions'][shortname] = new_description
-def render_html(data, footnotes, args):
+def render_html(data, footnotes, references, args):
     environment = Environment(loader=FileSystemLoader('.'))
     template = environment.get_template(args.template_html)
-    return template.render(data=data, footnotes=footnotes)
+    return template.render(data=data, footnotes=footnotes, references=references)
 def render_tex(data, file, flat_dict):
     '''
     Since LaTeX uses a lot of curly braces, it's useful to define custom Jinja strings.
@@ -63,7 +100,8 @@ def main(args):
             print(exc)
     if 'html' in args.format:
         footnotes = preprocess_html(data=table)
-        rendered_html = render_html(data=table, footnotes=footnotes, args=args)
+        references = gen_references(data=table)
+        rendered_html = render_html(data=table, footnotes=footnotes, references=references, args=args)
         if args.print:
             print(rendered_html)
         if args.write:

@@ -43,7 +43,7 @@ table tr td.etc {
 ul li .number {
   font-weight: bolder;
 }
-ul li .back {
+ul li .back, ul li span.citation {
   font-size: smaller;
   color: lightgray;
   bottom: 2px;
@@ -52,4 +52,8 @@ ul li .back {
 }
 ul li .back:hover {
   color: gray;
+}
+section#references {
+  opacity: 0.7;
+  font-size: smaller;
 }

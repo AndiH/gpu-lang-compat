@@ -22,7 +22,7 @@ Also, `_gen-symbols/` exist, which is part of my exploration for all of this. I 
 
 ## SC23 P3HPC Paper
 
-The template `table-template--descriptions.in.paper.tex` is a heavily modified version of the _standard_ TeX template extended to -- amongst others -- support references (from `references.bib`). Currently, the references are not supported in the HTML output. I'm happy to accept your pull request on this!
+The template `table-template--descriptions.in.paper.tex` is a heavily modified version of the _standard_ TeX template extended to -- amongst others -- support references (from `references.bib`). Work on supporting references also in HTML output is on the way.
 
 A preprint of the paper can be found at [arxiv.org/abs/2309.05445](https://arxiv.org/abs/2309.05445).
 
