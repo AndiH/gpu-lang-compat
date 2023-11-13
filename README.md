@@ -2,7 +2,8 @@
 
 There are three vendors of HPC-grade GPUs (NVIDIA, AMD, Intel), and many different programming models to use the devices for general computing. It's a zoo! This repository collects data about the state of support of the various combinations, for C/C++ and Fortran.
 
-The initial collection was done for a presentation (v1.0), continued to a blog post (v1.2), and further extended to a [proper paper](https://doi.org/10.1145/3624062.3624178) (v2.0).
+The initial collection was done for a presentation (v1.0), continued to a blog post (v1.2), and further extended to a [proper paper](https://doi.org/10.1145/3624062.3624178) (v2.0).  
+The current version in HTML for can be found at **[x-dev.pages.jsc.fz-juelich.de/models/](http://x-dev.pages.jsc.fz-juelich.de/models/)**.
 
 I'm happy to accept contributions for extension/correction. Please add issues or file a pull request (note the MIT license).
 
