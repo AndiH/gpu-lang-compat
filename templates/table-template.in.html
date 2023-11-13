@@ -30,16 +30,16 @@
 				{%- for model_name, languages in models.items() %}
 				{%- for language, description in languages.items() %}
 				<td class="status">
-					{%- for desc_values in description.values() %}
+					{%- for desc_values in description.values() -%}
 					{%- if desc_values is string %}
 					{{ data.get('states').get(desc_values)['symbol'] }}
 					{%- else %}
-					{%- for desc_value in desc_values %}
+					{%- for desc_value in desc_values -%}
 					{{ data.get('states').get(desc_value)['symbol'] }}
 					{%- endfor %}
 					{%- endif %}
 					{%- endfor -%}
-					<sup class="footnote" title="{{ data.get('descriptions').get(description.keys() | first) | striptags }}"><a href="#desc-{{ description.keys() | first }}">{{ footnotes.get(description.keys() | first).get('index') }}</a></sup></td>
+					<sup class="footnote" title="{{ data.get('descriptions').get(description.keys() | first) | striptags | escape }}"><a href="#desc-{{ description.keys() | first }}">{{ footnotes.get(description.keys() | first).get('index') }}</a></sup></td>
 				{%- endfor %}
 				{%- endfor %}
 			</tr>
