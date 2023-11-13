@@ -2,7 +2,7 @@
 
 There are three vendors of HPC-grade GPUs (NVIDIA, AMD, Intel), and many different programming models to use the devices for general computing. It's a zoo! This repository collects data about the state of support of the various combinations, for C/C++ and Fortran.
 
-The initial collection was done for a presentation (v1.0), continued to a blog post (v1.2), and further extended to a proper paper (v2.0).
+The initial collection was done for a presentation (v1.0), continued to a blog post (v1.2), and further extended to a [proper paper](https://doi.org/10.1145/3624062.3624178) (v2.0).
 
 I'm happy to accept contributions for extension/correction. Please add issues or file a pull request (note the MIT license).
 
@@ -22,7 +22,7 @@ Also, `_gen-symbols/` exist, which is part of my exploration for all of this. I 
 
 ## SC23 P3HPC Paper
 
-The template `table-template--descriptions.in.paper.tex` is a heavily modified version of the _standard_ TeX template extended to -- amongst others -- support references (from `references.bib`). Work on supporting references also in HTML output is on the way.
+The template `table-template--descriptions.in.paper.tex` is a heavily modified version of the _standard_ TeX template extended to -- amongst others -- support references (from `references.bib`). `render_table.py` can also generate references in HTML output, but the implementation is very fragile; lets hope it doesn't break🤞.
 
 A preprint of the paper can be found at [arxiv.org/abs/2309.05445](https://arxiv.org/abs/2309.05445).
 
