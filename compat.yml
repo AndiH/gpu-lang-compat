@@ -76,6 +76,8 @@ vendors:
         nvidiapython: 
           - fullok
           - nonvendorok
+      Julia:
+        nvidiajulia: nonvendorok
   AMD:
     CUDA:
       C:
@@ -129,6 +131,8 @@ vendors:
     etc:
       Python:
         amdpython: somesupport
+      Julia:
+        amdjulia: nonvendorok
   Intel:
     CUDA:
       C:
@@ -177,6 +181,8 @@ vendors:
     etc:
       Python:
         intelpython: prettyok
+      Julia:
+        inteljulia: nonvendorok
 descriptions:
   cudac: "CUDA C/C++ is supported on NVIDIA GPUs through the <a href='https://developer.nvidia.com/cuda-toolkit'>CUDA Toolkit</a>. First released in 2007, the toolkit covers nearly all aspects of the NVIDIA platform: an API for programming (incl. language extensions), libraries, tools for profiling and debugging, compiler, management tools, and more. The current version is CUDA 12.2. Usually, when referring to <em>CUDA</em> without any additional context, the CUDA API is meant. While incorporating some Open Source components, the CUDA platform in its entirety is proprietary and closed sourced. The low-level CUDA instruction set architecture is PTX, to which higher languages like the CUDA C/C++ are translated to. PTX is compiled to SASS, the binary code executed on the device. As it is the reference for platform, the support for NVIDIA GPUs through CUDA C/C++ is very comprehensive. In addition to support through the CUDA toolkit, NVIDIA GPUs can also be <a href='https://llvm.org/docs/CompileCudaWithLLVM.html'>used by Clang</a>, utilizing the LLVM toolchain to emit PTX code and compile it subsequently."
   cudafortran: "CUDA Fortran, a proprietary Fortran extension by NVIDIA, is supported on NVIDIA GPUs via the <a href='https://developer.nvidia.com/hpc-sdk'>NVIDIA HPC SDK</a> (<em>NVHPC</em>). NVHPC implements most features of the CUDA API in Fortran and is activated through the <code>-cuda</code> switch in the <code>nvfortran</code> compiler. The CUDA extensions for Fortran are modeled closely after the CUDA C/C++ definitions. In addition to creating explicit kernels in Fortran, CUDA Fortran also supports <em>cuf kernels</em>, a way to let the compiler generate GPU parallel code automatically. Very recently, <a href='https://reviews.llvm.org/D150159'>CUDA Fortran support was also merged into Flang</a>, the LLVM-based Fortran compiler."
@@ -195,6 +201,7 @@ descriptions:
   nvidiaalpakac: '<a href="https://github.com/alpaka-group/alpaka">Alpaka</a> supports NVIDIA GPUs in C++ (C++17), either through the NVIDIA CUDA C/C++ compiler <code>nvcc</code> or LLVM/Clang''s support of CUDA in <code>clang++</code>.'
   nvidiaalpakafortran: 'Alpaka is a C++ programming model and no ready-made Fortran support exists.'
   nvidiapython: 'Using NVIDIA GPUs from Python code can be achieved through multiple venues. NVIDIA itself offers <a href="https://github.com/NVIDIA/cuda-python">CUDA Python</a>, a package delivering low-level interfaces to CUDA C/C++. Typically, code is not directly written using CUDA Python, but rather CUDA Python functions as a backend for higher level models. CUDA Python is available on PyPI as <a href="https://pypi.org/project/cuda-python/"><code>cuda-python</code></a>. An alternative to CUDA Python from the community is <a href="https://github.com/inducer/pycuda">PyCUDA</a>, which adds some higher-level features and functionality and comes with its own C++ base layer. PyCUDA is available on PyPI as <a href="https://pypi.org/project/pycuda/"><code>pycuda</code></a>. The most well-known, higher-level abstraction is <a href="https://cupy.dev/">CuPy</a>, which implements primitives known from Numpy with GPU support, offers functionality for defining custom kernels, and bindings to libraries. CuPy is available on PyPI as <a href="https://pypi.org/project/cupy-cuda12x/"><code>cupy-cuda12x</code></a> (for CUDA 12.x). Two packages arguably providing even higher abstractions are Numba and CuNumeric. <a href="http://numba.pydata.org/">Numba</a> offers access to NVIDIA GPUs and features  acceleration of functions through Python decorators (<em>functions wrapping functions</em>); it is available as <a href="https://pypi.org/project/numba/"><code>numba</code></a> on PyPI. <a href="https://github.com/nv-legate/cunumeric">cuNumeric</a>, a project by NVIDIA, allows to access the GPU via Numpy-inspired functions (like CuPy), but utilizes the <a href="https://github.com/nv-legate/legate.core">Legate library</a> to transparently scale to multiple GPUs.'
+  nvidiajulia: 'Using NVIDIA GPUs in Julia is possible through the community supported <a href="https://github.com/JuliaGPU/CUDA.jl">CUDA.jl</a> package that enables both low-level kernel programming in Julia as well as high-level array based programming.'
   amdcudac: 'While CUDA is not directly supported on AMD GPUs, it can be translated to HIP through AMD''s <a href="https://github.com/ROCm-Developer-Tools/HIPIFY">HIPIFY</a>. Using <code>hipcc</code> and <code>HIP_PLATFORM=amd</code> in the environment, CUDA-to-HIP-translated code can be executed.'
   amdcudafortran: 'No direct support for CUDA Fortran on AMD GPUs is available, but AMD offers a source-to-source translator, <a href="https://github.com/ROCmSoftwarePlatform/gpufort">GPUFORT</a>, to convert some CUDA Fortran to either Fortran with OpenMP (via <a href="https://github.com/ROCm-Developer-Tools/aomp">AOMP</a>) or Fortran with HIP bindings and extracted C kernels (via <a href="https://github.com/ROCmSoftwarePlatform/hipfort">hipfort</a>). As stated in the project repository, the covered functionality is <a href="https://github.com/ROCmSoftwarePlatform/gpufort#limitations">driven by use-case requirements</a>; the last commit is two years old.'
   amdhipc: '<a href="https://github.com/ROCm-Developer-Tools/HIP">HIP</a> C++ is the <em>native</em> programming model for AMD GPUs and, as such, fully supports the devices. It is part of AMD''s GPU-targeted <a href="https://rocm.docs.amd.com/en/latest/">ROCm platform</a>, which includes compilers, libraries, tool, and drivers and mostly consists of Open Source Software. HIP code can be compiled with <a href="https://github.com/ROCm-Developer-Tools/HIPCC"><code>hipcc</code></a>, utilizing the correct environment variables (like <code>HIP_PLATFORM=amd</code>) and compiler options (like <code>--offload-arch=gfx90a</code>). <code>hipcc</code> is a <em>compiler driver</em> (wrapper script) which assembles the correct compilation string, finally calling <a href="https://github.com/RadeonOpenCompute/llvm-project">AMD''s Clang compiler</a> to generate host/device code (using the <a href="https://llvm.org/docs/AMDGPUUsage.html">AMDGPU backend</a>).'
@@ -208,6 +215,7 @@ descriptions:
   amdkokkosc: '<a href="https://github.com/kokkos/kokkos">Kokkos</a> supports AMD GPUs in C++ mainly through the HIP/ROCm backend. Also, an OpenMP offloading backend is available.'
   amdalpakac: '<a href="https://github.com/alpaka-group/alpaka">Alpaka</a> supports AMD GPUs in C++ through HIP or through an OpenMP backend.'
   amdpython: 'AMD does not officially support GPU programming with Python, but third-party solutions are available. <a href="https://docs.cupy.dev/en/latest/install.html#using-cupy-on-amd-gpu-experimental">CuPy</a> experimentally supports AMD GPUs/ROCm. The package can be found on PyPI as <code>cupy-rocm-5-0</code>. Numba once had <a href="https://numba.pydata.org/numba-doc/latest/roc/index.html">support for AMD GPUs</a>, but it is <a href="https://numba.readthedocs.io/en/stable/release-notes.html#version-0-54-0-19-august-2021">not maintained anymore</a>. Low-level bindings from Python to HIP exist, for example <a href="https://github.com/jatinx/PyHIP">PyHIP</a> (available as <code>pyhip-interface</code> on PyPI). Bindings to OpenCL also exist (<a href="https://documen.tician.de/pyopencl/">PyOpenCL</a>).'
+  amdjulia: 'Using AMD GPUs in Julia is possible through the community supported <a href="https://github.com/JuliaGPU/AMDGPU.jl">AMDGPU.jl</a> package. '
   intelcudac: "Intel itself does not support CUDA C/C++ on their GPUs. They offer <a href='https://github.com/oneapi-src/SYCLomatic'>SYCLomatic</a>, though, an Open Source tool to translate CUDA code to SYCL code, allowing it to run on Intel GPUs. The commercial variant of SYCLomatic is called the <a href='https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html'>DPC++ Compatibility Tool</a> and bundled with oneAPI toolkit. The community project <a href='https://github.com/CHIP-SPV/chipStar'>chipStar</a> (previously called CHIP-SPV, recently released a 1.0 version) allows to target Intel GPUs from CUDA C/C++ code by using the CUDA support in Clang. chipStar delivers a <a href='https://github.com/CHIP-SPV/chipStar/blob/main/docs/Using.md#compiling-cuda-application-directly-with-chipstar'>Clang-wrapper, <code>cuspv</code></a>, which replaces calls to <code>nvcc</code>. Also <a href='https://github.com/vosen/ZLUDA'>ZLUDA</a> exists, which implements CUDA support for Intel GPUs; it is not maintained anymore, though."
   intelcudafortran: "No direct support exists for CUDA Fortran on Intel GPUs. A simple example to bind SYCL to a (CUDA) Fortran program (via ISO C BINDING) can be <a href='https://github.com/codeplaysoftware/SYCL-For-CUDA-Examples/tree/master/examples/fortran_interface'>found on GitHub</a>."
   intelhipc: 'No native support for HIP C++ on Intel GPUs exists. The Open Source third-party project <a href="https://github.com/CHIP-SPV/chipStar">chipStar</a> (previously called CHIP-SPV), though, supports <a href="https://github.com/CHIP-SPV/chipStar/blob/main/docs/Using.md#compiling-a-hip-application-using-chipstar">HIP on Intel GPUs</a> by mapping it to OpenCL or Intel''s Level Zero runtime. The compiler uses an LLVM-based toolchain and relies on its HIP and SPIR-V functionality.'
@@ -222,6 +230,7 @@ descriptions:
   intelkokkosc: 'No direct support by Intel for Kokkos is available, but <a href="https://kokkos.github.io/kokkos-core-wiki/">Kokkos</a> supports Intel GPUs through an experimental SYCL backend.'
   intelalpakac: 'Since <a href="https://github.com/alpaka-group/alpaka/releases/tag/0.9.0">v.0.9.0</a>, <a href="https://github.com/alpaka-group/alpaka">Alpaka</a> contains experimental SYCL support with which Intel GPUs can be targeted. Also, Alpaka can fall back to an OpenMP backend.'
   intelpython: 'Intel GPUs can be used from Python through three notable packages. First, Intel''s <a href="https://github.com/IntelPython/dpctl"><em>Data Parallel Control</em> (dpctl)</a> implements low-level Python bindings to SYCL functionality. It is available on PyPI as <a href="https://pypi.org/project/dpctl/"><code>dpctl</code></a>. Second, a higher level, Intel''s <a href="https://github.com/IntelPython/numba-dpex"><em>Data-parallel Extension to Numba</em> (numba-dpex)</a> supplies an extension to the JIT functionality of Numba to support Intel GPUs. It is available from Anaconda as <a href="https://anaconda.org/intel/numba-dpex"><code>numba-dpex</code></a>. Finally, and arguably highest level, Intel''s <a href="https://github.com/IntelPython/dpnp"><em>Data Parallel Extension for Numpy</em> (dpnp)</a> builds up on the Numpy API and extends some functions with Intel GPU support. It is available on PyPI as <a href="https://pypi.org/project/dpnp/"><code>dpnp</code></a>, although latest versions appear to be available <a href="https://github.com/IntelPython/dpnp/releases">only on GitHub</a>.'
+  inteljulia: 'Using Intel GPUs in Julia is possible through the community supported <a href="https://github.com/JuliaGPU/oneAPI.jl">oneAPI.jl</a> package'
 references:
   cudac: CUDA
   cudafortran: CUDAFortran
@@ -240,6 +249,7 @@ references:
   nvidiaalpakac: alpaka
   nvidiaalpakafortran: alpaka
   nvidiapython: cudapython,pycuda,cupy,numba,cunumeric
+  nvidiajulia: besard2018juliagpu,besard2019prototyping
   amdcudac: HIP
   amdcudafortran: gpufort
   amdhipc: HIP
@@ -252,6 +262,7 @@ references:
   amdkokkosc: kokkos
   amdalpakac: alpaka
   amdpython: cudapython
+  amdjulia: AMDGPUJulia
   intelcudac: syclomatic,chipstar,oneapi
   intelhipc: chipstar
   intelsyclc: intelllvm,oneapi,opensyclproceedings
@@ -263,3 +274,4 @@ references:
   intelstandardfortran: oneapi
   intelkokkosc: kokkos
   intelpython: dpctl,numba-dpex,dpnp
+  inteljulia: oneAPIJulia
