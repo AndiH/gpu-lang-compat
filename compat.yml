@@ -115,7 +115,7 @@ vendors:
           - prettyok
           - somesupport
       F:
-        amdstandardfortran: nope
+        amdstandardfortran: prettyok
     Kokkos:
       C:
         amdkokkosc: nonvendorok
@@ -204,7 +204,7 @@ descriptions:
   amdopenmpc: 'AMD offers <a href="https://github.com/ROCm-Developer-Tools/aomp">AOMP</a>, a dedicated, Clang-based compiler for using OpenMP C/C++ on AMD GPUs (<em>offloading</em>). AOMP is usually shipped with ROCm. The compiler <a href="https://www.exascaleproject.org/wp-content/uploads/2022/02/Elwasif-ECP-sollve_vv_final.pdf">supports most OpenMP 4.5 and some OpenMP 5.0 features</a>. Since the compiler is Clang-based, the usual Clang compiler options apply (<code>-fopenmp</code> to enable OpenMP parsing, and others). Also in the upstream Clang compiler, <a href="https://clang.llvm.org/docs/OffloadingDesign.html">AMD GPUs can be targeted through OpenMP</a>; as outlined for NVIDIA GPUs, the support for OpenMP 5.0 is nearly complete, and support for OpenMP 5.1/5.2 is comprehensive. In addition, the <a href="https://cpe.ext.hpe.com/docs/cce/man7/intro_openmp.7.html">HPE Cray Programming Environment</a> supports OpenMP on AMD GPUs.'
   amdopenmpfortran: 'Through <a href="https://github.com/ROCm-Developer-Tools/aomp">AOMP</a>, AMD supports OpenMP offloading to AMD GPUs in Fortran, using the <code>flang</code> executable and Clang-typical compiler options (foremost <code>-fopenmp</code>). Support for AMD GPUs is also available through the <a href="https://cpe.ext.hpe.com/docs/cce/man7/intro_openmp.7.html">HPE Cray Programming Environment</a>.'
   amdstandardc: 'AMD does not yet provide production-grade support for Standard-language parallelism in C++ for their GPUs. Currently under development is <a href="https://github.com/ROCmSoftwarePlatform/roc-stdpar"><em>roc-stdpar</em></a> (ROCm Standard Parallelism Runtime Implementation), which aims to supply pSTL algorithms on the GPU and <a href="https://discourse.llvm.org/t/rfc-adding-c-parallel-algorithm-offload-support-to-clang-llvm/72159">merge the implementation with upstream LLVM</a>. Support for GPU-parallel algorithms is enabled with <code>-stdpar</code>. An <a href="https://discourse.llvm.org/t/rfc-openmp-offloading-backend-for-c-parallel-algorithms/73468">alternative proposal in the LLVM</a> community aims to support the pSTL via an OpenMP backend. Also Open SYCL <a href="https://github.com/OpenSYCL/OpenSYCL/pull/1088">is in the process of creating support for C++ parallel algorithms</a> via a <code>--hipsycl-stdpar</code> switch. By using Open SYCL''s backends, also AMD GPUs are supported. Intel provides the Open Source <a href="https://github.com/oneapi-src/oneDPL">oneDPL</a> (<em>oneAPI DPC++ Library</em>) which <a href="https://oneapi-src.github.io/oneDPL/parallel_api_main.html">implements pSTL algorithms</a> through the DPC++ compiler (see also <em>C++ Standard Parallelism for Intel GPUs</em>). DPC++ has <a href="https://intel.github.io/llvm-docs/GetStartedGuide.html#build-dpc-toolchain-with-support-for-hip-amd">experimental support for AMD GPUs</a>.'
-  amdstandardfortran: 'There is no (known) way to launch Standard-based parallel algorithms in Fortran on AMD GPUs.'
+  amdstandardfortran: "Recently, standard parallelism from Fortran is supported on AMD GPUs via AMD's <em>Next Gen</em> Fortran Compiler (based on the new LLVM Flang). Support is being improved, a summary is <a href='https://github.com/amd/InfinityHub-CI/blob/main/fortran/README.md'>available on GitHub</a>. Also in <a href='https://support.hpe.com/hpesc/public/docDisplay?docId=dp00005037en_us&docLocale=en_US'>HPE's Cray Fortran compiler</a>, Standard parallelism is supported."
   amdkokkosc: '<a href="https://github.com/kokkos/kokkos">Kokkos</a> supports AMD GPUs in C++ mainly through the HIP/ROCm backend. Also, an OpenMP offloading backend is available.'
   amdalpakac: '<a href="https://github.com/alpaka-group/alpaka">Alpaka</a> supports AMD GPUs in C++ through HIP or through an OpenMP backend.'
   amdpython: 'AMD does not officially support GPU programming with Python, but third-party solutions are available. <a href="https://docs.cupy.dev/en/latest/install.html#using-cupy-on-amd-gpu-experimental">CuPy</a> experimentally supports AMD GPUs/ROCm. The package can be found on PyPI as <code>cupy-rocm-5-0</code>. Numba once had <a href="https://numba.pydata.org/numba-doc/latest/roc/index.html">support for AMD GPUs</a>, but it is <a href="https://numba.readthedocs.io/en/stable/release-notes.html#version-0-54-0-19-august-2021">not maintained anymore</a>. Low-level bindings from Python to HIP exist, for example <a href="https://github.com/jatinx/PyHIP">PyHIP</a> (available as <code>pyhip-interface</code> on PyPI). Bindings to OpenCL also exist (<a href="https://documen.tician.de/pyopencl/">PyOpenCL</a>).'
@@ -249,6 +249,7 @@ references:
   amdopenmpc: aomp,ecpopenmpbof,hpepe
   amdopenmpfortran: aomp,hpepe
   amdstandardc: rocstdpar,opensyclproceedings,onedpl
+  amdstandardfortran: amdnewflang,hpefortran
   amdkokkosc: kokkos
   amdalpakac: alpaka
   amdpython: cudapython
