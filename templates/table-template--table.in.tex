@@ -1,16 +1,18 @@
 ((* set first_vendor = data.get('vendors').keys() | list | first *))
-\begin{tabular}{c|cc|cc|cc|cc|cc|cc|cc|cc|c}
+\begin{tabular}{c|cc|cc|cc|cc|cc|cc|cc|cc|cc}
   &
     ((* for key, value in data.get('vendors').get(first_vendor).items() *))
     ((* if not key == 'etc' -*))
     \multicolumn{2}{c}{((( key )))} &
+    ((* else -*))
+    \multicolumn{2}{c}{((( key )))}
     ((* endif -*))
     ((* endfor -*))
     \\
   &
     ((* for key, value in data.get('vendors').get(first_vendor).items() *))
     ((* for kkey, vvalue in value.items() -*))
-    \((( kkey ))) ((* if not key =='etc' *))&((* endif *))
+    \((( kkey ))) ((* if not kkey =='Julia' *))&((* endif *))
     ((*- endfor +*))
     ((* endfor *))
     \\
@@ -31,7 +33,9 @@
   ((*- endfor -*))
   ((*- endif -*))
   \refwithstate{((( description.keys() | first )))}
-  (((- ' & ' if not loop_models.last )))
+  ((*- if not (loop_models.last and loop_languages.last) -*))
+   & 
+  ((* endif *))
   ((*- endfor -*))
   ((*- endfor -*))
   ((*- endfor +*)) \\

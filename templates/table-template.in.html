@@ -11,7 +11,7 @@
 			<tr>
 				<td class="empty"></td>
 				{%- for key, value in data.get('vendors').get(first_vendor).items() %}
-				<td {{ 'colspan="2"' if not key == 'etc' }} class="level-1{{ ' etc' if key == 'etc' }}">{{ key }}</td>
+				<td colspan="2" class="level-1{{ ' etc' if key == 'etc' }}">{{ key }}</td>
 				{%- endfor %}
 			</tr>
 			<tr>
