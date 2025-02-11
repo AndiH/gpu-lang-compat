@@ -231,7 +231,7 @@ references:
   nvidiahipfortran: hipfort
   nvidiasycl: intelllvm,opensyclproceedings
   syclfortran: khronossycl
-  openaccc: nvhpc,gccopenacc,claccieee,jarmusch22
+  openaccc: nvhpc,gccopenacc,claccieee,jarmusch22,clacchpcc
   openaccfortran: nvhpc,gccopenacc,flaccieee
   nvidiaopenmpc: nvhpc,gccopenmp,clangopenmp,hpepe
   nvidiaopenmpfortran: nvhpc,gccopenmp,hpepe,flang
@@ -246,7 +246,7 @@ references:
   amdcudafortran: gpufort
   amdhipc: HIP
   amdsyclc: opensyclproceedings,intelllvm
-  amdopenaccc: gccopenacc,claccieee
+  amdopenaccc: gccopenacc,claccieee,clacchpcc
   amdopenaccfortran: gpufort,gccopenacc,flaccieee
   amdopenmpc: aomp,ecpopenmpbof,hpepe
   amdopenmpfortran: aomp,hpepe
